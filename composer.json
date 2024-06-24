@@ -12,8 +12,9 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^8.65",
         "laravel/tinker": "^2.5",
-        "softon/indipay": "^1.2",
-        "laravel/ui": "^3.0"
+        "laravel/ui": "^3.0",
+        "ramsey/uuid": "^4.7",
+        "softon/indipay": "^1.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

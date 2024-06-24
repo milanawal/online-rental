@@ -13,6 +13,7 @@ use Mail;
 use App\Models\Products;
 use App\Models\Category;
 use App\Models\BankDetail;
+use Illuminate\Auth\Events\Verified;
 
 
 class UserController extends Controller
@@ -183,12 +184,19 @@ class UserController extends Controller
          }
 
          function addProduct() {
+            if(auth()->user()->email_verified!=1){
+                return redirect()->back()->with('warningstatus', 'Please verify your email before adding products');   
+
+            }
             $categories = Category::all();
             return view('dashboards.admin.Products.add')->with('categories', $categories);
          }
 
         public function products()
         {
+            // dd('jere');
+           
+
             $Products=Products::where('owner_id','=',Auth::user()->id)->paginate(5);
             return view('dashboards.user.myproducts')->with('Products', $Products);
         }
@@ -243,6 +251,30 @@ class UserController extends Controller
             $user->save();
             return redirect()->back()->with('successstatus', 'Your Bank Data is Updated Succesfully');
 
+        }
+
+        public function verifyEmail(Request $request)
+        {
+            $user = User::find($request->route('id'));
+    
+            if (!hash_equals((string) $request->route('hash'), sha1($user->getEmailForVerification()))) {
+                throw new AuthorizationException;
+            }
+    
+            if ($user->hasVerifiedEmail()) {
+                $user->email_verified = 1;
+                $user->email_verified_at = time();
+                $user->save();
+                return redirect()->intended('dashboard')->with('message', 'Your email is already verified.');
+            }
+    
+            if ($user->markEmailAsVerified()) {
+                event(new Verified($user));
+            }
+
+
+    
+            return redirect()->intended('dashboard')->with('message', 'Your email has been verified.');
         }
 
     

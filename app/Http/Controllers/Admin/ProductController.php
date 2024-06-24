@@ -13,6 +13,7 @@ class ProductController extends Controller
 {
     public function Store(Request $request)
     {
+        
            $products = new Products();
 
            $lastrecord = DB::table('products')->latest()->first();
@@ -28,12 +29,14 @@ class ProductController extends Controller
            }
            $products->id= $id;
            $products->name= $request->input('name'); 
-           $slug = Str::slug($request->input('name'), '-');
-           $products->url= $slug;
+        //    $slug = Str::slug($request->input('name'), '-');
+           $uuid = (string) Str::uuid();
+           $products->url= $uuid;
            $products->description= $request->input('small_description');
            $products->price= $request->input('price');
            $products->owner_id= Auth::user()->id;
            $products->category_id= $request->category_id;
+           $products->cost= $request->cost;
           
            $products->discount= $request->input('Discount');
            $products->priority= $request->input('priority');

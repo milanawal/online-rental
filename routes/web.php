@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\UserController;
+
  Route::post('subscribe-news-letter','UserController@subscribe');
  
  Route::post('send-email','UserController@send_email');
@@ -49,6 +51,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 |----------------------------------------------------------------------------
 */
 Route::get('/user/dashboard', 'UserController@index')->middleware('auth');
+Route::get('/email/verify/{id}/{hash}', [UserController::class, 'verifyEmail'])->name('verification.verify');
+
 Route::get('/Shop/{purl}', 'Product_Ordering_Controller\FrontEndController@index');
 
 Route::get('/user/dashboard', 'UserController@index')->middleware('auth');
