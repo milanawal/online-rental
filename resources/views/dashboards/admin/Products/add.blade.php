@@ -83,12 +83,12 @@
                           </div>
                           
 
-                          <div class="col-md-6">
+                          <!-- <div class="col-md-6">
                               <div class="form-group">
                                   <label> Custom URL(Slug)</label>
                                   <input type="text" class="form-control" name="url"  placeholder="Custom URL">
                               </div>
-                          </div>
+                          </div> -->
 
                           <div class="col-md-12">
                               <div class="form-group">
@@ -109,6 +109,12 @@
                               <div class="form-group">
                                   <label> Price</label>
                                   <input type="text" name="price" min="0" class="form-control">
+                              </div>
+                          </div>
+                          <div class="col-md-6"   >
+                              <div class="form-group">
+                                  <label> Total Cost</label>
+                                  <input type="text" name="cost" min="0" class="form-control">
                               </div>
                           </div>
                           <div class="col-md-6"   >

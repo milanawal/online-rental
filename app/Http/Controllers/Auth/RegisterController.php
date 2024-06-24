@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Mail;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Carbon;
 
 class RegisterController extends Controller
 {
@@ -76,10 +79,52 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if($user){
+            $name='Online Rental';
+            $email='milanawal123@gmail.com';
+            $subject='Test';
+            $message='Hello';
+            $emailto=$data['email'];
+            $recievername=$name;
+            /* Mail Starts Here */
+            $welcomemessage='Hello';
+            $emailbody=$data['name'];
+            $verificationUrl = $this->generateVerificationUrl($user);
+            $emailcontent=array(
+                'WelcomeMessage'=>$welcomemessage,
+                'emailBody'=>$emailbody,
+                'verificationUrl'=>$verificationUrl
+            );
+            
+
+            Mail::send(array('html' => 'emails.emailVerification'), $emailcontent, function($message) use
+                ($emailto, $subject,$recievername)
+                {
+                    $message->to($emailto, $recievername)->subject
+                    ('Hello Admin New Mail From your Client/Customer:'.$subject);
+                    $message->from('admin@onlinerental.com','OnlineRental');
+                    
+                });
+                            
+
+            return $user;
+        }
+
+
+    }
+    
+    protected function generateVerificationUrl($user)
+    {
+        return URL::temporarySignedRoute(
+            'verification.verify',
+            Carbon::now()->addMinutes(60),
+            ['id' => $user->id, 'hash' => sha1($user->getEmailForVerification())]
+        );
     }
 }

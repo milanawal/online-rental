@@ -77,7 +77,12 @@ $(document).ready(function (){
                 @auth
                   <li class="drop-down"><a href="#">  <i class="far fa-user-circle "></i>  My Account  <i class="fas fa-angle-down"></i></a> 
                        <ul>
+                          @if(auth()->user()->role=='admin')
+                            <li><a href="{{url('admin-dash')}}" ><i class="fas fa-tachometer-alt"></i>  Dashboard</a></li>
+                            @else
                             <li><a href="{{url('dashboard')}}" ><i class="fas fa-tachometer-alt"></i>  Dashboard</a></li>
+
+                            @endif
                             <li><a href="{{url('profile')}}" ><i class="fas fa-user"></i>  Profile</a></li>
                             <li><a href="{{url('Orders')}}" > <i class="fas fa-table"></i> Orders</a></li>
                             <li><a href="{{url('Payments')}}" ><i class="fas fa-receipt"></i>  Transactions</a></li>
