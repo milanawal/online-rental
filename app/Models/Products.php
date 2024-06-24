@@ -23,10 +23,8 @@ class Products extends Model
         'keywords',
         'meta_description',
         'status',
-        'category_id'
-        
-        
-
-
+        'category_id',
+        'cost',
+        'payment_status'
     ];
 }

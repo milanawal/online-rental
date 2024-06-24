@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use Mail;
 use App\Models\Products;
 use App\Models\Category;
+use App\Models\BankDetail;
 
 
 class UserController extends Controller
@@ -210,6 +211,38 @@ class UserController extends Controller
             $offer->accepted_by = Auth::user()->id;
             $offer->save();
             return redirect()->back()->with('status', 'You have accepted the offer');   
+        }
+
+        public function updateProfile(){
+            return view('dashboards.user.profile');
+        }
+
+        public function updateBank(Request $request){
+            // dd(Auth::user()->bankDetail);
+            $validation =$request->validate([
+                'bank_name'=>'nullable|max:60',
+                'account_name'=>'nullable|max:60',
+                'branch'=>'nullable|max:60',
+                'account_number'=>'nullable|digits:15',
+                'phone'=>'nullable|digits:10',
+            ]);
+
+            $user_id=Auth::user()->id;
+            $user=BankDetail::where('user_id',$user_id)->first();
+            if(empty($user)){
+                $user = new BankDetail();
+            }
+
+            $user->bank_name=$request->input('bank_name');
+            $user->user_id=$user_id;
+            $user->account_name=$request->input('account_name');
+            $user->branch=$request->input('branch');
+            $user->status=1;
+            $user->account_number=$request->input('account_number');
+            $user->phone_number=$request->input('phone');
+            $user->save();
+            return redirect()->back()->with('successstatus', 'Your Bank Data is Updated Succesfully');
+
         }
 
     

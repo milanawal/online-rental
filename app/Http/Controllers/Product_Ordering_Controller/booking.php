@@ -131,6 +131,23 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                  $Order->paymentmode=$p_method;
                  $Order->save();       
                  $id=$Order->id;
+
+                if(session('cart'))
+                {
+                    $total=0;$count=0;$order_details='';$delivery_charges=0;                    
+                    foreach (session('cart') as $key => $details) 
+                    {
+                        $productId=$details['item_id'];
+                        $OrderProduct = new OrderProducts();
+                        $OrderProduct->order_id=$id;
+                        $OrderProduct->product_id=$productId;
+                        $OrderProduct->quantity=$details['item_quantity'];
+                        $OrderProduct->days=$details['days'];
+                        $OrderProduct->save(); 
+
+                    }
+                
+                }
                 
                  if($p_method=='Online')
                  {

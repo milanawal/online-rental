@@ -8,6 +8,7 @@ use App\Models\Products;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     public function Store(Request $request)
@@ -27,7 +28,8 @@ class ProductController extends Controller
            }
            $products->id= $id;
            $products->name= $request->input('name'); 
-           $products->url= $request->input('url');
+           $slug = Str::slug($request->input('name'), '-');
+           $products->url= $slug;
            $products->description= $request->input('small_description');
            $products->price= $request->input('price');
            $products->owner_id= Auth::user()->id;

@@ -78,7 +78,7 @@
                                   <select class="form-control" name="category_id" id="category_id" required>
                                     <option value="">Select Category</option>
                                     @foreach($categories as $category)
-                                        <option {{ $Products->category_id==$category->id ? 'selected="selected"' : ''}} value="{{$category->id}}">{{$category->name}}</option>
+                                        <option {{ !empty($Products->category_id) && $Products->category_id==$category->id ? 'selected="selected"' : ''}} value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
                                 </select>
 
