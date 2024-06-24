@@ -277,6 +277,92 @@ class UserController extends Controller
             return redirect()->intended('dashboard')->with('message', 'Your email has been verified.');
         }
 
+
+        public function productUpdate(Request $request, $id)
+        {
+            $products=Products::find($id);
+            $products->name= $request->input('name'); 
+            $products->url= $request->input('url');
+            $products->description= $request->input('small_description');
+            $products->price= $request->input('price');
+            $products->discount= $request->input('Discount');
+            $products->rating= $request->input('rating');
+            $products->priority= $request->input('priority');
+            $products->category_id= $request->input('category_id');
+    
+    
+             $products->title= $request->input('meta_title');
+            $products->meta_description= $request->input('meta_description');
+            $products->keywords= $request->input('meta_keyword');
+    
+            $products->status= $request->input('status')==true ? '1':'0';
+            
+               $products->delivery_charges= $request->input('delivery_charges');
+               $products->additional_info= $request->input('additional_info');
+    
+            $image1 =$request->file('image1');
+            if($request->hasfile('image1'))
+            {
+                $destination='Uploads/Products/'.$products->image1;
+                if(File::exists($destination))
+                {
+                    File::delete($destination);
+                }
+                $extension=$image1->getClientOriginalExtension();
+                $product_Image_name=$products->url.'-1-.'.$extension;
+                $image1->move('Uploads/Products/',$product_Image_name);
+                $products->image1=$product_Image_name;
+    
+            }
+    
+    
+            $image2 =$request->file('image2');
+            if($request->hasfile('image2'))
+            {
+                $destination='Uploads/Products/'.$products->image2;
+                if(File::exists($destination))
+                {
+                    File::delete($destination);
+                }
+                $extension=$image2->getClientOriginalExtension();
+                $product_Image_name=$products->url.'-2-.'.$extension;
+                $image2->move('Uploads/Products/',$product_Image_name);
+                $products->image2=$product_Image_name;
+    
+            }
+            $image3 =$request->file('image3');
+            if($request->hasfile('image3'))
+            {
+                $destination='Uploads/Products/'.$products->image3;
+                if(File::exists($destination))
+                {
+                    File::delete($destination);
+                }
+                $extension=$image3->getClientOriginalExtension();
+                $product_Image_name=$products->url.'-3-.'.$extension;
+                $image3->move('Uploads/Products/',$product_Image_name);
+                $products->image3=$product_Image_name;
+    
+            }
+    
+            $image4 =$request->file('image4');
+            if($request->hasfile('image4'))
+            {
+                $destination='Uploads/Products/'.$products->image4;
+                if(File::exists($destination))
+                {
+                    File::delete($destination);
+                }
+                $extension=$image4->getClientOriginalExtension();
+                $product_Image_name=$products->url.'-4-.'.$extension;
+                $image4->move('Uploads/Products/',$product_Image_name);
+                $products->image4=$product_Image_name;
+    
+            }
+            $products->save();
+            return redirect()->back()->with('status','Product Data Updated Successfully Successfully');   
+        }
+
     
     
 }

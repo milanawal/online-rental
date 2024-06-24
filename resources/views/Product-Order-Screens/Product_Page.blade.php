@@ -11,8 +11,12 @@
 
 </div>
 <link rel="stylesheet" href="{{asset('assets/css/xzoom.css')}}">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 <script src="{{ asset('assets/js/srcforimagezoomingeffects.min.js')}}"></script>
 <script src="{{ asset('assets/js/xzoom.min.js')}}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
 
 
 
@@ -20,9 +24,12 @@
 <script>
     $(document).ready(function() {
         $("#main_image, .xzoom-gallery").xzoom({fadeIn:true;fadeOut:true;position:inside;});
-
+        $('#daterange').daterangepicker({
+                opens: 'left' // Adjust the calendar to open on the left of the input
+            });
     });
 </script> 
+
 <style>
 
     .checked {
@@ -111,21 +118,37 @@
                               
 
                                 <input type="hidden"   name="product_id"   min=0 value="{{$Product->id}}" required class="form-control product_id">
-                                   <p> Price : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">₹ {{$Product->price}}</strong> per/day</p>
+                                   <p> Price : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$Product->price}}</strong> per/day</p>
                                       <?php echo $Product->additional_info;?>
+                                <p> Cost : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$Product->cost}}</strong> Product Value</p>
+                                <!-- <p> 50 % of cost for deposite : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$Product->cost * 50/100}}</strong> Product Value</p> -->
+
                                 <div class="col-md-6" style="margin-left:-20px;">  
-                                  <input type="number" class="form-control quantity" name="quantity" placeholder="Quantity">
+                                  <input type="number" class="form-control quantity" name="quantity" value="{{ $Product->quantity==null || $Product->quantity==0?0:$Product->quantity}}" placeholder="Quantity">
                                 </div>
-                                <div class="col-md-6" style="margin-left:-20px;">  
+                                <!-- <div class="col-md-6" style="margin-left:-20px;">  
                                   <input type="number" class="form-control days" name="days" placeholder="Days for Rent">
+                                </div> -->
+                                <div class="col-md-6" style="margin-left:-20px;">  
+                                <label><strong>Start Date</strong></label>
+                                <!-- <input type="text" class="form-control date" id="daterange" name="daterange" /> -->
+                                  <input type="date" class="form-control start_date" name="start_date" placeholder="Date for Rent">
                                 </div>
                                 <div class="col-md-6" style="margin-left:-20px;">  
-                                  <input type="date" class="form-control date" name="date" placeholder="Date for Rent">
+                                <label ><strong>End Date</strong></label>
+                                <!-- <input type="text" class="form-control date" id="daterange" name="daterange" /> -->
+                                  <input type="date" class="form-control end_date" name="end_date" placeholder="Date for Rent">
                                 </div>
                               <div class="col-md-12 my-3"  id="changethebuttons">
 
+                              @if($Product->quantity==null || $Product->quantity==0 || $Product->owner_id==Auth()->user()->id)
+                              <button class="btaobtn btaobtn-primary px-2 py-2 book-now-btn" disabled >Book</button>
 
-                                      <button class="btaobtn btaobtn-primary px-2 py-2 book-now-btn" >Book</button>
+                              @else
+                              <button class="btaobtn btaobtn-primary px-2 py-2 book-now-btn" >Book</button>
+
+                              @endif
+
                                       <!-- <button   class="btaobtn btaobtn-light px-2 py-2 add-to-cart-btn">Add to Cart </button> -->
                                     <div id="showloading"> </div>
                                       <div align="left" class="alert alert-danger" id="msg_diverr2" style="display: none;">

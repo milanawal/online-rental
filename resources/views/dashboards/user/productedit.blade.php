@@ -8,7 +8,7 @@
 
         <p class="white-text" style="font-weight:bold;"> 
 
-            <a href="{{url('admin-products')}}" class="badge badge-pill btn-outline-green     px-3 py-2">  <i class="fas fa-file-powerpoint"></i>  &nbsp; Show All Products</a> 
+            <a href="{{url('my-products')}}" class="badge badge-pill btn-outline-green     px-3 py-2">  <i class="fas fa-file-powerpoint"></i>  &nbsp; Show All Products</a> 
         
             <a href="{{url('admin-add-product')}}" class="badge badge-pill btn-outline-dark   px-3 py-2">   <i class="fas fa-plus"></i>  &nbsp; Add New Product</a> 
             <a href="{{url('admin-bin-products')}}" class="badge badge-pill btn-outline-danger px-3 py-2"><i class="fas fa-dumpster"></i> Recycle Bin</a>
@@ -32,7 +32,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-              <form method="POST" action="{{url('admin-product-update/'.$Products->id)}}" enctype="multipart/form-data">
+              <form method="POST" action="{{url('my-product-update/'.$Products->id)}}" enctype="multipart/form-data">
                   @csrf
                   {{method_field('PUT')}}
               <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -49,7 +49,7 @@
                     <a class="nav-link" id="SEO-tab" data-toggle="tab" href="#SEO" role="tab" aria-controls="SEO"
                       aria-selected="false">SEO</a>
                   </li>
-                  @if(auth()->user()->role=='admin')
+                  @if(auth()->user() && auth()->user()->role=='admin')
                   <li class="nav-item">
                       <a class="nav-link" id="pstatus-tab" data-toggle="tab" href="#pstatus" role="tab" aria-controls="pstatus"
                         aria-selected="false">Delivery Charges & Product Status</a>

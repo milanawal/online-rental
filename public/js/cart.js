@@ -71,8 +71,8 @@ $(document).ready(function () {
 
         var product_id = $(this).closest('.product_data').find('.product_id').val();
         var quantity = $(this).closest('.product_data').find('.quantity').val();
-        var days = $(this).closest('.product_data').find('.days').val();
-        var date = $(this).closest('.product_data').find('.date').val();
+        var start_date = $(this).closest('.product_data').find('.start_date').val();
+        var end_date = $(this).closest('.product_data').find('.end_date').val();
 
 
         $.ajax({
@@ -81,8 +81,8 @@ $(document).ready(function () {
             data: {
                 'quantity': quantity,
                 'product_id': product_id,
-                'days': days,
-                'date': date,
+                'start_date': start_date,
+                'end_date': end_date,
             },
             success: function (response) {
                 //window.alert(response.quantity);

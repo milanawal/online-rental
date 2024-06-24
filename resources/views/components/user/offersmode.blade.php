@@ -38,7 +38,7 @@
                                    <a href="{{url('Order-Status/'.$item->id.'')}}" class="badge btaobtn btaobtn-primary px-2 py-2 ">Check Status</a>
                                  
                                
-                                  
+<!--                                   
                                 
                                  @if($item->Delivery_Status!='pending' || $item->Order_Cancel_Status==1 || $item->offer_status==1)
                                   <a href="{{url('Order-Status/'.$item->id.'')}}"    class="badge btaobtn btaobtn-danger px-2 py-2 disabled">Reject Offer</a>
@@ -51,7 +51,7 @@
                                 @else
                                 <a href="{{url('accept-rent/'.$item->id.'')}}" class="badge btaobtn btaobtn-primary px-2 py-2 ">Accept Rent Offer</a>
 
-                                @endif
+                                @endif -->
    
    
                                </td>

@@ -56,7 +56,7 @@ aria-hidden="true">
                                         <th><i class="fas fa-money-check "></i> Payment Status:</th>
                                         <td> 
                                         @if(session('p_status')=='pending')
-                                         {{session('p_status')}}  <a href="/proceed_to_Payment/{{session('Order_id')}}" class="btaobtn btaobtn-success">Pay Now</a>
+                                        {{session('p_status')}}
                                          @else
                                              {{session('p_status')}}
                                          @endif

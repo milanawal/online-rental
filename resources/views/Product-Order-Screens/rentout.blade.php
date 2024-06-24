@@ -67,10 +67,16 @@
                         <ul  class="card    p-3"  style=" list-style: none;">
                                     
                             @if(session('cart'))
-                                <?php $total=0;$count=0;$delivery_charges=0 ?>
+                                <?php $total=0;$count=0;$delivery_charges=0;$deposite=0 ?>
                                 @foreach(session('cart') as $id => $details)
                                 <?php     $count=$count +1 ;
-                                $total += $details['Final_Price'] * $details['item_quantity'] * $details['days'] ?>
+                                $total += $details['item_price'] * $details['item_quantity'] * $details['days']
+                                 ?>
+
+                                <?php 
+                                  $deposite += $details['deposite_amount']
+                                 ?>
+                                
 
                         
                                 @endforeach
@@ -104,13 +110,17 @@
                                             <p align="left" style="float:left;">
                                                 
                                                Days: {{$details['days']}}
+                                               
                                             
                                             </p>
                                             
                                             <p align="right" >
-                                                {{$details['item_quantity']}} X    {{$details['Final_Price']}} x  {{$details['days']}}
+                                                {{$details['item_quantity']}} X    {{$details['item_price']}} x  {{$details['days']}}
                                                 
                                             </p>
+
+                                          <p> 20 % of cost for deposite : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$details['deposite_amount']}}</strong> Product Value</p>
+
 
                                           <?php $delivery_charges = $delivery_charges + $details['delivery_charges'] ?>
                                         @endforeach
@@ -129,7 +139,6 @@
                                         <p align="right" >
                                                    <span class="cart-grand-total-price">
                                                    <strike class="red-text" style="font-size:15px;">{{ $total }}/-</strike> </span>
-                                                    <span class="green-text" style="font-size:20px;">{{ $total -session('discount') * $total / 100     }} /- </span><br>
                                                     <span class="green-text" style="font-size:15px;" > 
                                                         {{session('discount')}}   {{session('message')}}
                                                                              
@@ -155,7 +164,7 @@
                                         <h4 align="right" >
                                             <i class="fas fa-rupee-sign " ></i>  <strong>
                                             <?php $service_charge = (15 / 100) * $total ?>
-                                              {{ $service_charge     }}</strong> 
+                                              {{ ceil($service_charge)     }}</strong> 
                                         </h4>
                                     </li> 
                                 
@@ -165,7 +174,7 @@
                                         </p>
                                         <h4 align="right" >
                                             <i class="fas fa-rupee-sign " ></i>  <strong>
-                                              {{ $total +$service_charge +  $delivery_charges - session('discount') * $total / 100     }}</strong> 
+                                              {{ $total +ceil($service_charge) + $deposite + $delivery_charges - session('discount') * $total / 100     }}</strong> 
                                         </h4>
                                     </li>    
                                     @endif

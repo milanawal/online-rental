@@ -74,6 +74,7 @@ Route::get('/user/dashboard', 'UserController@index')->middleware('auth');
     Route::post('/my-bank-update', 'UserController@updateBank')->middleware('auth');
     
     
+    Route::put('/my-product-update/{id}','UserController@productUpdate');
     
 
     Route::post('/my-profile-update', 'UserController@update')->middleware('auth');

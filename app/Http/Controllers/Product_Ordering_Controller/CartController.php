@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
     use Illuminate\Support\Facades\Cookie;
     use Session;
     use Illuminate\Support\Facades\Validator;
+    use DateTime;
 
     class CartController extends Controller
     {
@@ -23,8 +24,8 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                   $request->all(),
                   [
                       'quantity' => ['required', 'integer', 'min:1'],
-                      'days' => ['required', 'integer', 'min:1'],
-                      'date' => ['required', 'date'],
+                      'start_date' => ['required', 'date'],
+                      'end_date' => ['required', 'date'],
                   ]
               );
 
@@ -43,15 +44,23 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                 
                 $prod_id = $request->input('product_id');
                 $quantity = $request->input('quantity');
-                $days = $request->input('days');
-                $date = $request->input('date');
+                $start_date = $request->input('start_date');
+                $end_date = $request->input('end_date');
                 $id=$prod_id;
+
+                $startDate = new DateTime($start_date);
+                $endDate = new DateTime($end_date);
+
+                $dateDiff = $startDate->diff($endDate);
+
+                $daysDifference = $dateDiff->days;
 
                 $products = Products::find($prod_id);
                 $prod_name = $products->name;
                 $prod_image = $products->image1;
                 $delivery_charges=$products->delivery_charges;
                 $priceval = $products->price;
+                $deposite_amount = $products->cost * 20/100;
                     $discount=$products->discount;
                 /* Fixing Price for a Product */
                     $offerprice=$priceval * ($discount)/100;
@@ -70,15 +79,17 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                             $cart = [
                                 $id => [
                                     'item_id' => $prod_id,
-                                    'days' => $days,
-                                    'date' => $date,
+                                    'start_date' => $start_date,
+                                    'end_date' => $end_date,
+                                    'days' => $daysDifference,
+                                    'deposite_amount'=>$deposite_amount,
                                     'item_name' => $prod_name,
                                     'item_quantity' => $quantity,
                                     'item_image' => $prod_image,
                                     'item_price' => $priceval,
                                     'offer_price' => $offerprice, 
                                     'delivery_charges'=>$delivery_charges,
-                                    'Final_Price'=>$Final_Price,
+       
                                     
                                     'contentforofferprice'=>$contentforofferprice,
                                 ]
@@ -101,14 +112,15 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                                 $cart[$id] = [
                                     'item_id' => $prod_id,
                                     'item_name' => $prod_name,
-                                    'days' => $days,
-                                    'date' => $date,
+                                    'start_date' => $start_date,
+                                    'end_date' => $end_date,
+                                    'days' => $daysDifference,
+                                    'deposite_amount'=>$deposite_amount,
                                     'item_quantity' => $quantity,
                                     'item_image' => $prod_image,
                                     'item_price' => $priceval,
                                     'offer_price' => $offerprice,
                                     'delivery_charges'=>$delivery_charges,
-                                    'Final_Price'=>$Final_Price,
                                     'contentforofferprice'=>$contentforofferprice,
                              
                                 ];
