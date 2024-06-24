@@ -16,13 +16,12 @@
                                                 <div class="card-body">
                                                        
                                                             <p align="left" style="float:left;">
-                                                                <img src="{{asset('assets/img/testimonials/rahul.jpg')}}" class="z-depth-1" style="width:100px;">
+                                                                <img src="{{asset('assets/img/testimonials/test-1.jpg')}}" class="z-depth-1" style="width:100px;">
                                                             </p>
-                                                            <p ><span style="font-weight:bold;">Vijayanagaram Rahul</span> <br>Freelauncer</p>
+                                                            <p ><span style="font-weight:bold;">Sarah Thompson</span> <br>Photographer</p>
                                                             <br><br>
                                                             <p align="left" class="card-text" style="font-family: 'Balsamiq Sans', cursive;display:block;">
-                                                                <i>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata 
-                                                                Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata
+                                                                <i>Renting out my extra camera equipment has been a game-changer! I love how easy it is to list items and start earning. Plus, I've met some fantastic people through this platform. Highly recommend!
                                                                 </i>
                                                             </p>
                                                             
@@ -34,13 +33,12 @@
                                                 <div class="card-body">
                                                        
                                                             <p align="left" style="float:left;">
-                                                                <img src="{{asset('assets/img/testimonials/rahul.jpg')}}" class="z-depth-1" style="width:100px;">
+                                                                <img src="{{asset('assets/img/testimonials/test-2.jpg')}}" class="z-depth-1" style="width:100px;">
                                                             </p>
-                                                            <p ><span style="font-weight:bold;">Vijayanagaram Rahul</span> <br>Freelauncer</p>
+                                                            <p ><span style="font-weight:bold;">James Rodriguez</span> <br>Home Renovation Specialist</p>
                                                             <br><br>
                                                             <p align="left" class="card-text" style="font-family: 'Balsamiq Sans', cursive;display:block;">
-                                                                <i>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata 
-                                                                Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata
+                                                                <i>I needed some power tools for a home renovation project and found everything I needed on this site. The rental process was smooth and secure, and the tools were in great condition. This service saved me a lot of money!
                                                                 </i>
                                                             </p>
                                                             
@@ -52,13 +50,12 @@
                                                 <div class="card-body">
                                                        
                                                             <p align="left" style="float:left;">
-                                                                <img src="{{asset('assets/img/testimonials/rahul.jpg')}}" class="z-depth-1" style="width:100px;">
+                                                                <img src="{{asset('assets/img/testimonials/test-3.jpg')}}" class="z-depth-1" style="width:100px;">
                                                             </p>
-                                                            <p ><span style="font-weight:bold;">Vijayanagaram Rahul</span> <br>Freelauncer</p>
+                                                            <p ><span style="font-weight:bold;">Emily Clark</span> <br>Travel Blogger</p>
                                                             <br><br>
                                                             <p align="left" class="card-text" style="font-family: 'Balsamiq Sans', cursive;display:block;">
-                                                                <i>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata 
-                                                                Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata
+                                                                <i>As a frequent traveler, renting instead of buying makes so much sense. I've rented everything from camping gear to bicycles, and every experience has been positive. The platform is user-friendly, and the customer support is excellent.
                                                                 </i>
                                                             </p>
                                                             
@@ -76,55 +73,18 @@
                                                 <div class="card-body">
                                                        
                                                             <p align="left" style="float:left;">
-                                                                <img src="{{asset('assets/img/testimonials/sandeep.jpg')}}" class="z-depth-1" style="width:100px;">
+                                                                <img src="{{asset('assets/img/testimonials/test-4.jpg')}}" class="z-depth-1" style="width:100px;">
                                                             </p>
-                                                            <p ><span style="font-weight:bold;">sandeep</span> <br>Freelauncer</p>
+                                                            <p ><span style="font-weight:bold;">Michael Lee</span> <br>Interior Designer</p>
                                                             <br><br>
                                                             <p align="left" class="card-text" style="font-family: 'Balsamiq Sans', cursive;display:block;">
-                                                                <i>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata 
-                                                                Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata
+                                                                <i>Listing my furniture for rent was incredibly straightforward. The extra income has been a nice bonus, and I appreciate the secure transactions. It's great to know my items are in good hands and being used by others who need them.
                                                                 </i>
                                                             </p>
                                                             
                                                 </div>
                                             </div>                                        
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="card mb-2">
-                                                <div class="card-body">
-                                                       
-                                                            <p align="left" style="float:left;">
-                                                                <img src="{{asset('assets/img/testimonials/sandeep.jpg')}}" class="z-depth-1" style="width:100px;">
-                                                            </p>
-                                                            <p ><span style="font-weight:bold;">sandeep</span> <br>Freelauncer</p>
-                                                            <br><br>
-                                                            <p align="left" class="card-text" style="font-family: 'Balsamiq Sans', cursive;display:block;">
-                                                                <i>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata 
-                                                                Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata
-                                                                </i>
-                                                            </p>
-                                                            
-                                                </div>
-                                            </div>                                        
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="card mb-2">
-                                                <div class="card-body">
-                                                       
-                                                            <p align="left" style="float:left;">
-                                                                <img src="{{asset('assets/img/testimonials/sandeep.jpg')}}" class="z-depth-1" style="width:100px;">
-                                                            </p>
-                                                            <p ><span style="font-weight:bold;">sandeep</span> <br>Freelauncer</p>
-                                                            <br><br>
-                                                            <p align="left" class="card-text" style="font-family: 'Balsamiq Sans', cursive;display:block;">
-                                                                <i>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata 
-                                                                Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata
-                                                                </i>
-                                                            </p>
-                                                            
-                                                </div>
-                                            </div>                                        
-                                        </div> 
                                     
                                 </div>
                             </div>
