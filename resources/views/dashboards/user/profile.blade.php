@@ -119,7 +119,7 @@ function closeNav() {
                                   </div>
                                   
           
-    <h3 class="py-3">Delivery Address</h3>
+                                  <!-- <h3 class="py-3">Delivery Address</h3>
                                    <div class="card">
                                        
                                        <div class="card-body">
@@ -179,6 +179,160 @@ function closeNav() {
                                                            <input type="text" value="{{Auth::user()->alternativemno}}"   name="alternativemno" class="form-control">
                                                            </div>
                                                        </div>
+                           
+                           
+                                                       <div class="col-md-12">
+                                                           <div class="form-group">
+                                                                   <button type="submit" class="btn btn-success btn-lg"> Update    </button>
+                                                           </div>
+                                                       </div>
+                                                       </div>
+                                       </div>
+                                    </div> -->
+                           </form>
+
+
+                           <form action="{{url('my-profile-update')}}" method="POST" enctype="multipart/form-data">
+
+                           <h3 class="py-3">Profile</h3>
+                                   <div class="card">
+                                       
+                                       <div class="card-body">
+                                       <div class="row "  >
+                                                       <div class="col-md-12">
+                                                        
+                                                       </div>
+                                                       <div class="col-md-6">
+                                                           <div class="form-group">
+                                                            <label> First Name</label>
+                                                           <input type="text" value="{{Auth::user()->address1}}" name="address1" class="form-control">
+                                                           </div>
+                                                       </div>
+                           
+                                                       <div class="col-md-12">
+                                                           <div class="form-group">
+                                                            <label> Last Name</label>
+                                                           <input type="text" value="{{Auth::user()->address2}}" name="address2"   class="form-control">
+                                                           </div>
+                                                       </div>
+                                                   </div>
+
+                                                   <div class="row "  >
+                                                       <div class="col-md-12">
+                                                        
+                                                       </div>
+                                                       <div class="col-md-6">
+                                                           <div class="form-group">
+                                                            <label> Address1 ( Door No: )</label>
+                                                           <input type="text" value="{{Auth::user()->address1}}" name="address1" class="form-control">
+                                                           </div>
+                                                       </div>
+                           
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label> Address2 ( LandMark/Nearby )</label>
+                                                           <input type="text" value="{{Auth::user()->address2}}" name="address2"   class="form-control">
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                                   <div class="row">
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label> City</label>
+                                                           <input type="text" value="{{Auth::user()->city}}"  name="city" class="form-control">
+                                                           </div>
+                                                       </div>
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label>State</label>
+                                                           <input type="text" value="{{Auth::user()->state}}"  name="state" class="form-control">
+                                                           </div>
+                                                       </div>
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label>Pincode</label>
+                                                           <input type="text" value="{{Auth::user()->pincode}}"  name="pincode" class="form-control">
+                                                           </div>
+                                                       </div>
+                                                       <div class="col-md-4">
+                                                        <div class="form-group">
+                                                         <label>Country</label>
+                                                        <input type="text" value="{{Auth::user()->country}}" name="country" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label>Mobile No</label>
+                                                           <input type="text" value="{{Auth::user()->mnumber}}" name="mno" class="form-control">
+                                                           </div>
+                                                       </div>
+                           
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label>Alternative Mobile No</label>
+                                                           <input type="text" value="{{Auth::user()->alternativemno}}"   name="alternativemno" class="form-control">
+                                                           </div>
+                                                       </div>
+                           
+                           
+                                                       <div class="col-md-12">
+                                                           <div class="form-group">
+                                                                   <button type="submit" class="btn btn-success btn-lg"> Update    </button>
+                                                           </div>
+                                                       </div>
+                                                       </div>
+                                       </div>
+                                    </div>
+                           </form>
+
+
+
+
+
+                           <form action="{{url('my-bank-update')}}" method="POST" enctype="multipart/form-data">
+                               {{ csrf_field() }}
+                            
+                                    <h3 class="py-3">Bank Details</h3>
+                                   <div class="card">
+                                       
+                                       <div class="card-body">
+                                                   <div class="row "  >
+                                                       <div class="col-md-12">
+                                                        
+                                                       </div>
+                                                       <div class="col-md-6">
+                                                           <div class="form-group">
+                                                            <label> Bank Name</label>
+                                                           <input type="text" value="{{Auth::user()->bankDetail->bank_name}}" name="bank_name" class="form-control">
+                                                           </div>
+                                                       </div>
+                           
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label> Branch</label>
+                                                           <input type="text" value="{{Auth::user()->bankDetail->branch}}" name="branch"   class="form-control">
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                                   <div class="row">
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label> Account Name</label>
+                                                           <input type="text" value="{{Auth::user()->bankDetail->account_name}}"  name="account_name" class="form-control">
+                                                           </div>
+                                                       </div>
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label>Account Number</label>
+                                                           <input type="text" value="{{Auth::user()->bankDetail->account_number}}"  name="account_number" class="form-control">
+                                                           </div>
+                                                       </div>
+                                                       <div class="col-md-4">
+                                                           <div class="form-group">
+                                                            <label>Phone (Used for banking)</label>
+                                                           <input type="text" value="{{Auth::user()->bankDetail->phone_number}}"  name="phone" class="form-control">
+                                                           </div>
+                                                       </div>                                                 
                            
                            
                                                        <div class="col-md-12">

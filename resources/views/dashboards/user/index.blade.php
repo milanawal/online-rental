@@ -97,7 +97,9 @@ function closeNav() {
                                             <li style="float:left;"><strong>My Rented products: </strong>{{Auth::user()->alternativemno}}
                                             <a href="{{url('my-products')}}" class="">Products</a></li>
                                             <li style="float:left;"><strong>My Rent Offers: </strong>{{Auth::user()->alternativemno}}
-                                            <a href="{{url('my-rent-offers')}}" class="">Offers</a></li>
+                                            <a href="{{url('my-rent-offers')}}" class="">Offers   &nbsp;   &nbsp; &nbsp; &nbsp;</a></li>
+                                            <li style="float:left;"><strong>Complete Profile: </strong>{{Auth::user()->alternativemno}}
+                                            <a href="{{url('my-prpfile')}}" class="">Profile</a></li>
                                             
                                             
                                             

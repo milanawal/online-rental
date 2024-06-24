@@ -29,6 +29,10 @@ class LoginController extends Controller
      */
      public function redirectTo()
     {
+        // dd(auth()->user());
+        if(auth()->user()->role=='admin'){
+            return 'admin-dash';
+        }
          $count=session()->get('cart');
          if($count)
          {

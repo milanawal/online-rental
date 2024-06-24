@@ -65,6 +65,10 @@ Route::get('/user/dashboard', 'UserController@index')->middleware('auth');
     Route::get('my-products-delete/{id}','UserController@deleteproduct');
     Route::get('my-rent-offers','UserController@getMyOffers');
     Route::get('accept-rent/{id}','UserController@acceptMyOffers');
+
+    Route::get('my-profile','UserController@updateProfile');
+    Route::post('/my-bank-update', 'UserController@updateBank')->middleware('auth');
+    
     
     
 
