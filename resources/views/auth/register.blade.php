@@ -20,7 +20,7 @@ Register - Gainloe
 
         <div class="col-md-2 animated bounceIn" >
             <a href="/">
-            <img src="{{asset('assets/img/Logo-Square.webp')}}" class="img-fluid px-2 py-2" style="width:200px;">
+            <img src="{{asset('assets/img/Logo-Square.png')}}" class="img-fluid px-2 py-2" style="width:200px;">
             </a>
         </div>
         <h5 class="my-2" > Create your Account</h5>
@@ -91,7 +91,7 @@ Register - Gainloe
                                    <p class="my-2"> 
                                           <a class="black-text" href="/">
                                                <i class="fas fa-arrow-left"></i>
-                                           <u>Back to Gainloe</u>
+                                           <u>Back to Home</u>
                                            </a>
                                    </p> 
                                  </div>

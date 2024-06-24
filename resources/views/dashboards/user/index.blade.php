@@ -101,8 +101,6 @@ function closeNav() {
                                             </li>
 
                                             <li><strong>Mobile Number:</strong>{{Auth::user()->mnumber}}</li>
-                                            <li><a href="{{url('rent-add-product')}}" class="">   <i class="fas fa-plus"></i>  &nbsp; Add New Product For Rent</a> </li>
-
                                             <li style="float:left;"><strong>Alternative Mobile No: </strong>{{Auth::user()->alternativemno}}
                                             <a href="{{url('profile')}}" class="btaobtn btaobtn-outline-dark p-2">Edit</a></li>
                                             <li style="float:left;"><strong>My Rented products: </strong>{{Auth::user()->alternativemno}}
