@@ -38,7 +38,7 @@ $(document).ready(function (){
     
           <div id="Gainaloe_Logo" class="logo mr-auto" >
             <!--  <h1 class="text-light"><a href="/">CompanYName</a></h1>  -->
-            <a href="/" ><img src=" {{asset('assets/img/Logo.webp')}}" alt="" class="img-fluid" ></a>
+            <a href="/" ><img src=" {{asset('assets/img/Logo.png')}}" alt="" class="img-fluid" ></a>
             
           </div>
           <div class="col-md-4"  >
@@ -79,6 +79,8 @@ $(document).ready(function (){
                        <ul>
                             <li><a href="{{url('dashboard')}}" ><i class="fas fa-tachometer-alt"></i>  Dashboard</a></li>
                             <li><a href="{{url('profile')}}" ><i class="fas fa-user"></i>  Profile</a></li>
+                            <li><a href="{{url('rent-add-product')}}" ><i class="fas fa-shopping-cart"></i>  Add Product For Rent</a></li>
+                            <li><a href="{{url('my-products')}}" ><i class="fas fa-list"></i>  My Products</a></li>
                             <li><a href="{{url('Orders')}}" > <i class="fas fa-table"></i> Orders</a></li>
                             <li><a href="{{url('Payments')}}" ><i class="fas fa-receipt"></i>  Transactions</a></li>
                              <a   href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  <i class="fas fa-sign-in-alt"></i> {{ __('Logout') }}</a>
