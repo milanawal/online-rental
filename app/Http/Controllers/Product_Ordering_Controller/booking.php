@@ -11,6 +11,8 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
     use App\Models\Order;
     use Illuminate\Support\Facades\Auth;
     use Mail;
+    use App\Models\Transaction;
+    use App\Models\OrderProducts;
 
 
     class booking    extends Controller
@@ -23,7 +25,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
         
         public function Shipping_Payment_Screen()
         {
-           
+        //    dd('sdfsd');
             return view('Product-Order-Screens.Shipping_Payment_Screen');
         }
         public function apply_promo_code(Request $request)
@@ -54,40 +56,22 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
         }
         public function  order_proceed(Request $request)
         {
-            // dd(session('cart'));
-              $validation =$request->validate([
-                      'Payment_Method'=>'required',
-                      'Door_No'=>'required|max:60',
-                      'LandMark'=>'required|max:60',
-                      'city'=>'required|max:60|regex:/^[a-zA-Z\s]*$/',
-                      'state'=>'required|max:60|regex:/^[a-zA-Z\s]*$/',
-                      'pincode'=>'required|digits_between:4,10',
-                      'mno'=>'required|digits:10',
-                    
-                       'alternativemno'=>'nullable|digits:10',
-                      'country'=>'required|max:30|regex:/^[a-zA-Z\s]*$/',
-                // 'MobileNumber'=>'required|numeric',
-                 
-                ]);
-                  print_r($validation);
                
                 /* Delivery Details*/
-                $address1=$request->input('Door_No');
-                $address2=$request->input('LandMark');
-                $city=$request->input('city');
-                $state=$request->input('state');
-                $pincode=$request->input('pincode');
-                $mno=$request->input('mno');
-                $alternativemno=$request->input('alternativemno');
+                $address1=auth()->user()->profile->address_1;
+                $address2=auth()->user()->profile->address_2;
+                $city=auth()->user()->profile->city;
+                $state=auth()->user()->profile->state;
+                $mno=auth()->user()->profile->mobile_1;
+                $alternativemno=auth()->user()->profile->mobile_2;
                 
-                $country=$request->input('country');
+                $country=auth()->user()->profile->country;
                 
                
-                        
 
-                $Delivery_Address=$address1.','.$address2.'<br>'.$city.','.$state.','.$country.'<br>'.$pincode.','.$mno.','.$alternativemno;
+                $Delivery_Address=$address1.','.$address2.'<br>'.$city.','.$state.','.$country.'<br>'.','.$mno.','.$alternativemno;
              /* Delivery Details*/
-                $p_method=$request->input('Payment_Method');
+                $p_method='Online';
             /* Order Details Starts Here*/
                 if(session('cart'))
                 {
@@ -96,25 +80,20 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                     {
                         $count=$count +1 ;
                         $productId=$details['item_id'];
-                        $total += $details['Final_Price'] * $details['item_quantity'];
+                        $total += $details['item_price'] * $details['item_quantity'] * $details['days'];
                         $order_details=$order_details.'<br>'.
                         ('Product Name:'.$details["item_name"].', Quantity: '.$details["item_quantity"].
-                        '<br> Price:'.$details["Final_Price"]);
+                        '<br> Price:'.$details["item_price"]);
                         $delivery_charges = $delivery_charges + $details['delivery_charges'] ;
-                        $date = $details['date'] ;
+                        $date = $details['start_date'] ;
+                        $end_date = $details['end_date'] ;
                     }
                 
                 }
-                if(session('promocode'))
-                {
-                    $promocode=session('promocode');
-                    $Amount = $total + $delivery_charges - session('discount') * $total / 100;
-                }
-                else
-                {
-                    $promocode=null;
-                    $Amount = $total + $delivery_charges;
-                }
+                $service_charge = (15 / 100) * $total;
+                $promocode=null;
+                $Amount = $total + $delivery_charges +$service_charge;
+                
                 $O_Details=$order_details;
                 $Email_Id=Auth::user()->email;
                 $loginid=$Email_Id;
@@ -129,6 +108,9 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                  $Order->required_date = $date;
                  $Order->product_id = $productId;
                  $Order->paymentmode=$p_method;
+                 $Order->payment_status=0;
+                 $Order->start_date=$date;
+                 $Order->end_date=$end_date;
                  $Order->save();       
                  $id=$Order->id;
 
@@ -142,54 +124,65 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                         $OrderProduct->order_id=$id;
                         $OrderProduct->product_id=$productId;
                         $OrderProduct->quantity=$details['item_quantity'];
-                        $OrderProduct->days=$details['days'];
+                        $OrderProduct->start_date=$details['start_date'];
+                        $OrderProduct->end_date=$details['end_date'];
+                        $OrderProduct->created_at=date('Y-m-d H:i:s');
                         $OrderProduct->save(); 
 
                     }
                 
                 }
                 
-                 if($p_method=='Online')
-                 {
-                    // return redirect("proceed_to_Payment/$id");
-                 }
-                 else
-                 {
+                $transaction_id= (string) \Illuminate\Support\Str::uuid();
+                $transaction = new Transaction();
+                $transaction->TXNID =  $transaction_id;
+                $transaction->Oder_No = $id;
+                $transaction->email = $Email_Id;
+                $transaction->amount =$Amount;
+                $transaction->status = 'pending';
+                $transaction->save();
 
-                   
-    	               
-    	                $welcomemessage='Hello '.$name.'<br>';
-    	                $emailbody='Your Order Was Placed Successfully<br>
-    	                <p>Thank you for your order. We’ll send a confirmation when your order ships. Your estimated delivery date is 3-5 working days. If you would like to view the status of your order or make any changes to it, please visit Your Orders on <a href="https://www.gainaloe.com">Gainaloe.com</a></p>
-    	                <h4>Order Details: </h4><p> Order No:'.$id.$O_Details.'</p>
-    	                 <p><strong>Delivery Address:</strong>
-    	               '.$Delivery_Address.'</p>
-    	                <p> <strong>Total Amount:</strong>
-    	                '.$Amount.'</p>
-    	                 <p><strong>Payment Method:</strong>'.$p_method.'</p>';
-    	                $emailcontent=array(
-    	                    'WelcomeMessage'=>$welcomemessage,
-    	                    'emailBody'=>$emailbody
-    	                   
-    	                    );
-    	                    // Mail::send(array('html' => 'emails.order_email'), $emailcontent, function($message) use
-    	                    // ($loginid, $name,$id)
-    	                    // {
-    	                    //     $message->to($loginid, $name)->subject
-    	                    //     ('Your Gainaloe.com order '.$id.' is Confirmed');
-    	                    //     $message->from('codetalentum@btao.in','Gainaloe');
-    	                        
-    	                    // });
-                    
-                            Session::forget('cart');
-                            Session::forget('discount');
-                            Session::forget('promocode');
-                            session()->flash('success', 'Session data  is Cleared');
-                              
-                  
-                    return redirect("/Orders")->with('status','Order Placed Succesfully!');                  
-                 }
                 
+    	               
+                    $welcomemessage='Hello '.$name.'<br>';
+                    $emailbody='Your Order Was Placed Successfully<br>
+                    <p>Thank you for your order. We’ll send a confirmation when your order ships. Your estimated delivery date is 3-5 working days. If you would like to view the status of your order or make any changes to it, please visit Your Orders on <a href="https://www.gainaloe.com">Gainaloe.com</a></p>
+                    <h4>Order Details: </h4><p> Order No:'.$id.$O_Details.'</p>
+                        <p><strong>Delivery Address:</strong>
+                    '.$Delivery_Address.'</p>
+                    <p> <strong>Total Amount:</strong>
+                    '.$Amount.'</p>
+                        <p><strong>Payment Method:</strong>'.$p_method.'</p>';
+                    $emailcontent=array(
+                        'WelcomeMessage'=>$welcomemessage,
+                        'emailBody'=>$emailbody
+                        
+                        );
+                        // Mail::send(array('html' => 'emails.order_email'), $emailcontent, function($message) use
+                        // ($loginid, $name,$id)
+                        // {
+                        //     $message->to($loginid, $name)->subject
+                        //     ('Your Gainaloe.com order '.$id.' is Confirmed');
+                        //     $message->from('codetalentum@btao.in','Gainaloe');
+                            
+                        // });
+                
+                    // Session::forget('cart');
+                    
+                    session()->flash('success', 'Session data  is Cleared');
+                              
+
+                    // return view('Product-Order-Screens.payment')->with('total',$Amount)->with('tuid',$transaction_id);
+
+                    return redirect(url('payment-confirm',$transaction_id))->with('success', 'Address updated successfully!');
+
+                    // return redirect()->url("/payment-confirm",$transaction_id)->with('status','Order Placed Succesfully!');                  
+                 
+                
+        }
+
+        function paymentScreen($transaction_id) {
+            return view('Product-Order-Screens.payment')->with('tuid',$transaction_id);
         }
        
         

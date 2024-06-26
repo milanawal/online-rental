@@ -13,6 +13,7 @@ use Mail;
 use App\Models\Products;
 use App\Models\Category;
 use App\Models\BankDetail;
+use App\Models\Transaction;
 use Illuminate\Auth\Events\Verified;
 
 
@@ -361,6 +362,22 @@ class UserController extends Controller
             }
             $products->save();
             return redirect()->back()->with('status','Product Data Updated Successfully Successfully');   
+        }
+
+        function paymentSuccess(Request $request){
+            $result = base64_decode($request->data);
+            $data = json_decode($result);
+            
+            $transaction = Transaction::where('TXNID',$data->transaction_uuid)->first();
+            if($transaction){
+                $transaction->transaction_code = $data->transaction_code; 
+                $transaction->status = 'payment_success';
+                $transaction->save();
+                return redirect("/Orders")->with('status','Order Placed Succesfully!');  
+            }
+                           
+
+
         }
 
     

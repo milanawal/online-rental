@@ -57,6 +57,9 @@ Route::get('/Shop/{purl}', 'Product_Ordering_Controller\FrontEndController@index
 
 Route::get('/user/dashboard', 'UserController@index')->middleware('auth');
 
+Route::get('payment-success','UserController@paymentSuccess');
+
+
     Route::get('/dashboard', 'UserController@index')->middleware('auth');
     Route::get('/profile', 'UserController@open_profile')->middleware('auth');
 
@@ -184,6 +187,9 @@ Route::get('confirm-rental','Product_Ordering_Controller\booking@openrentoutpage
 Route::get('Shipping_Payment_Screen','Product_Ordering_Controller\booking@Shipping_Payment_Screen')->middleware('auth');
 Route::post('apply-promocode','Product_Ordering_Controller\booking@apply_promo_code')->middleware('auth');
 Route::post('order-proceed','Product_Ordering_Controller\booking@order_proceed')->middleware('auth');
+Route::get('payment-confirm/{trans_id}','Product_Ordering_Controller\booking@paymentScreen')->middleware('auth');
+
+
 
 /*
 |---------------------------------------------------------------------------

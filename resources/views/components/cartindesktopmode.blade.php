@@ -46,7 +46,7 @@
                             
                             <tbody class="my-auto">
                                 @foreach(session('cart') as $id => $details)
-                                <?php $total += $details['Final_Price'] * $details['item_quantity'] ?>
+                                <?php $total += $details['item_price'] * $details['item_quantity'] ?>
                                 
                                     <tr class="cartpage">
                                         <td class="cart-image">
@@ -75,7 +75,7 @@
                                             <strong>
                                                 <span class="cart-grand-total-price">
                                                 <strike class="red-text" style="font-size:20px;">{{ $details['item_price']  * $details['item_quantity']}}/-</strike> </span>
-                                                <span class="green-text" style="font-size:25px;">{{ $details['Final_Price'] * $details['item_quantity']}} /- </span><br>
+                                                <span class="green-text" style="font-size:25px;">{{ $details['item_price'] * $details['item_quantity']}} /- </span><br>
                                                 <span>{{$details['contentforofferprice']}}</span>
                                             </strong>
                                         </td>
@@ -120,7 +120,7 @@
                         <div class="col-md-12">
                             <div class="cart-checkout-btn text-center">
                                 @if (Auth::user())
-                                     <a href="{{ url('checkout') }}" class="btn btn-outline-success   checkout-btn text-dark">PROCCED TO CHECKOUT</a>
+                                     <a href="{{ url('confirm-rental') }}" class="btn btn-outline-success   checkout-btn text-dark">PROCCED TO CHECKOUT</a>
                                 @else
                                     <a href="{{ url('login') }}" class="btn btn-outline-success  checkout-btn text-dark">PROCCED TO CHECKOUT</a>
                                     {{-- you add a pop modal for making a login --}}

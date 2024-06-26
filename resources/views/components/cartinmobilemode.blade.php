@@ -15,7 +15,7 @@
                                             <a href="clear-cart" class=" font-weight-bold ">Clear Cart</a>
                                         </div>
                                         @foreach(session('cart') as $id => $details)
-                                        <?php $total += $details['Final_Price'] * $details['item_quantity'] ?>
+                                        <?php $total += $details['item_price'] * $details['item_quantity'] ?>
                                         
 
                                             <div  align="center" class="card p-3 cartpage cart-product-quantity" >
@@ -39,7 +39,7 @@
                                                        Price     <strong>
                                                         <span class="cart-grand-total-price">
                                                         <strike class="red-text" style="font-size:20px;">{{ $details['item_price']  * $details['item_quantity']}}/-</strike> </span>
-                                                        <span class="green-text" style="font-size:25px;">{{ $details['Final_Price'] * $details['item_quantity']}} /- </span><br>
+                                                        <span class="green-text" style="font-size:25px;">{{ $details['item_price'] * $details['item_quantity']}} /- </span><br>
                                                         <span>{{$details['contentforofferprice']}}</span>
                                                     </strong>
                                                    </p>

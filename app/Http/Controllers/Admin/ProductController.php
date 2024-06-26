@@ -100,7 +100,7 @@ class ProductController extends Controller
     {
         $products=Products::find($id);
         $products->name= $request->input('name'); 
-        $products->url= $request->input('url');
+        // $products->url= $request->input('url');
         $products->description= $request->input('small_description');
         $products->price= $request->input('price');
         $products->discount= $request->input('Discount');

@@ -2,100 +2,6 @@
     <form method="POST" action="order-proceed">
         @csrf
 
-        <!--Form Data For Shippping and Payment Details Started at  Here -->
-        <div class="card  p-3 animated fadeInUp" >
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group"> 
-                    <input type="text"   name="Door_No"  placeholder="Apartment No./Door No" value="{{Auth::user()->address1}}"  class="form-control">
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                    
-                    <input type="text"   name="LandMark"  placeholder="LandMark"    value="{{Auth::user()->address2}}" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                    
-                    <input type="text" placeholder="City"   name="city" value="{{Auth::user()->city}}" class="form-control">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                    
-                    <input type="text"     placeholder="Pincode"   name="pincode"  value="{{Auth::user()->pincode}}"  class="form-control">
-                    </div>
-            </div>
-            
-        
-                <div class="col-md-12">
-                    <div class="form-group">
-                    
-                    <input type="text"   placeholder="State"    name="state" value="{{Auth::user()->state}}" class="form-control">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                    
-                    <input type="text"   placeholder="Country"    name="country" value="{{Auth::user()->country}}"  class="form-control">
-                    </div>
-                </div>
-            
-        
-                <div class="col-md-12">
-                    <div class="form-group">
-                
-                    <input type="number"  placeholder="Mobile No"   name="mno" class="form-control" value="{{Auth::user()->mnumber}}">
-                    </div>
-                </div>
-
-                <div class="col-md-12   ">
-                    <div class="form-group">
-                    
-                    <input type="number"  name="alternativemno" placeholder="Alternative Mobile Number"  class="form-control" value="{{Auth::user()->alternativemno}}">
-                    </div>
-                </div>
-            
-                    
-                
-        
-
-    
-            <div class="col-md-12   ">
-                <strong>  Payment Method:   </strong>
-            </div>
-            
-        
-            <div class="row px-3">
-                <div class="col-md-12">
-                    <div class="form-group">
-                            <!-- <input type="radio"  name="Payment_Method" value="Online"> Online :     <img src="http://i0.wp.com/ecoheater.ie/wp-content/uploads/2018/10/cards-.jpg" style="width:200px;"> -->
-                            <!-- <input type="radio"  name="Payment_Method" value="Online"> Online :
-                            <input type="radio"  name="Payment_Method" value="Cash"> Cash : -->
-
-                    </div>
-                </div>
-                <!--
-                <div class="col-md-12">
-                    <div class="form-group">
-                            <input type="radio" name="Payment_Method" value="COD"> COD(Cash On Delivery) :   
-                    </div>
-                </div>
-                -->
-
-              
-                
-            </div>
-            
-    
-        </div>
-
 
         <!--Form Data For Shippping and Payment Details Ended Here -->
         <!--Form Data For Order Details,....Starts Here-->
@@ -104,7 +10,7 @@
                 
                     @foreach(session('cart') as $id => $details)
                         <?php     $count=$count +1 ;
-                        $total += $details['item_price'] * $details['item_quantity'] ?>
+                        $total += $details['item_price'] * $details['item_quantity'] * $details['days'] ?>
                         <?php $delivery_charges = $delivery_charges + $details['delivery_charges'] ?>
                         @php  
                         $order_details=$order_details.'<br>'.
@@ -129,19 +35,4 @@
             </div>
         <!--Form Data For Order Details,....Ended Here-->
     </form>
-
-<form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
- <input type="text" id="amount" name="amount" value="100" required>
- <input type="text" id="tax_amount" name="tax_amount" value ="10" required>
- <input type="text" id="total_amount" name="total_amount" value="110" required>
- <input type="text" id="transaction_uuid" name="transaction_uuid"required>
- <input type="text" id="product_code" name="product_code" value ="EPAYTEST" required>
- <input type="text" id="product_service_charge" name="product_service_charge" value="0" required>
- <input type="text" id="product_delivery_charge" name="product_delivery_charge" value="0" required>
- <input type="text" id="success_url" name="success_url" value="https://esewa.com.np" required>
- <input type="text" id="failure_url" name="failure_url" value="https://google.com" required>
- <input type="text" id="signed_field_names" name="signed_field_names" value="total_amount,transaction_uuid,product_code" required>
- <input type="text" id="signature" name="signature" " required>
- <input value="Submit" type="submit">
- </form>
 </div>
