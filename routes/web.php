@@ -78,6 +78,7 @@ Route::get('/user/dashboard', 'UserController@index')->middleware('auth');
     
 
     Route::post('/my-profile-update', 'UserController@update')->middleware('auth');
+    Route::post('/my-address-update', 'ProfileController@update')->middleware('auth');
     Route::post('/update-password', 'UserController@updatepassword')->middleware('auth');
     
     Route::get('/Orders', 'UserController@open_orders')->middleware('auth');
@@ -112,6 +113,9 @@ Route::group(['middleware'=>['auth','isAdmin']],function ()
     Route::get('/admin-bin-users', 'Admin\LinksController@recycleusers');
     Route::get('admin/restore-user/{id}','Admin\UserController@restore');
     Route::get('admin/confirm-delete-user/{id}','Admin\UserController@confirmdelete');
+    Route::get('admin/user-profile/{id}','Admin\UserController@profile');
+    Route::post('admin/verify-profile/{id}','Admin\UserController@verifyProfile');
+
     Route::get('/admin-products', 'Admin\LinksController@products');
     Route::get('/admin-add-product', 'Admin\LinksController@show_add_product_screen');
 

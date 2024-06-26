@@ -150,7 +150,6 @@
                                         <p align="right" >
                                             <i class="fas fa-rupee-sign " ></i>  {{$total}}  
                                         </p>
-                                        <a href="" data-toggle="modal" data-target="#modalDiscount" >Have a PromoCode</a>
                                     
                                         @endif
                                       

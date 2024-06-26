@@ -76,8 +76,8 @@
                 <div class="col-md-12">
                     <div class="form-group">
                             <!-- <input type="radio"  name="Payment_Method" value="Online"> Online :     <img src="http://i0.wp.com/ecoheater.ie/wp-content/uploads/2018/10/cards-.jpg" style="width:200px;"> -->
-                            <input type="radio"  name="Payment_Method" value="Online"> Online :
-                            <input type="radio"  name="Payment_Method" value="Cash"> Cash :
+                            <!-- <input type="radio"  name="Payment_Method" value="Online"> Online :
+                            <input type="radio"  name="Payment_Method" value="Cash"> Cash : -->
 
                     </div>
                 </div>
@@ -104,12 +104,12 @@
                 
                     @foreach(session('cart') as $id => $details)
                         <?php     $count=$count +1 ;
-                        $total += $details['Final_Price'] * $details['item_quantity'] ?>
+                        $total += $details['item_price'] * $details['item_quantity'] ?>
                         <?php $delivery_charges = $delivery_charges + $details['delivery_charges'] ?>
                         @php  
                         $order_details=$order_details.'<br>'.
                         ('Product Name:'.$details["item_name"].', Quantity: '.$details["item_quantity"].
-                        '<br> Price:'.$details["Final_Price"]);
+                        '<br> Price:'.$details["item_price"]);
                         @endphp 
                     @endforeach
                 
@@ -129,4 +129,19 @@
             </div>
         <!--Form Data For Order Details,....Ended Here-->
     </form>
+
+<form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
+ <input type="text" id="amount" name="amount" value="100" required>
+ <input type="text" id="tax_amount" name="tax_amount" value ="10" required>
+ <input type="text" id="total_amount" name="total_amount" value="110" required>
+ <input type="text" id="transaction_uuid" name="transaction_uuid"required>
+ <input type="text" id="product_code" name="product_code" value ="EPAYTEST" required>
+ <input type="text" id="product_service_charge" name="product_service_charge" value="0" required>
+ <input type="text" id="product_delivery_charge" name="product_delivery_charge" value="0" required>
+ <input type="text" id="success_url" name="success_url" value="https://esewa.com.np" required>
+ <input type="text" id="failure_url" name="failure_url" value="https://google.com" required>
+ <input type="text" id="signed_field_names" name="signed_field_names" value="total_amount,transaction_uuid,product_code" required>
+ <input type="text" id="signature" name="signature" " required>
+ <input value="Submit" type="submit">
+ </form>
 </div>

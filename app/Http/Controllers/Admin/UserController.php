@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; 
 use App\User;
+use App\Models\Profile;
 
 class UserController extends Controller
 {
@@ -52,6 +53,23 @@ class UserController extends Controller
        $delete = User::find($id);
        $delete->delete();
        return redirect()->back()->with('status','User Permanently Deleted  Successfully !!');
+    }
+
+    function profile($id) {
+        $user = User::find($id);
+        return view('dashboards.admin.userprofile')->with('user', $user);
+    }
+
+    function verifyProfile($id){
+        $user=Profile::where('user_id',$id)->first();
+        if(empty($user)){
+            $user = new Profile();
+        }
+        $user->verified = 1;
+        $user->save();
+        return redirect(url('admin-all-users'))->with('success', 'User profile verified successfully!');
+
+
     }
     
 }

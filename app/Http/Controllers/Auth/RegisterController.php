@@ -68,6 +68,11 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'mnumber' => ['required', 'string', 'digits:10', 'unique:users'],
+        ], [
+            'mnumber.required' => 'The mobile number is required.',
+            'mnumber.digits' => 'The mobile number must be exactly 10 digits.',
+            'mnumber.unique' => 'The mobile number has already been taken.',
         ]);
     }
 
