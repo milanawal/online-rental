@@ -43,6 +43,7 @@
                 <tr>
                 <th>#Id</th>
                 <th>Name</th>
+                <th>Status</th>
                 <th>EmailId</th>
                 <th>Role</th>
               
@@ -57,11 +58,13 @@
                 <tr>
                 <td>{{ $data->id }}</td>
                 <td>{{ $data->name }}</td>
+                <td> {{ !empty($data->profile) && $data->profile->verified==1?'Verified':'Not Verified' }} </td>
                 <td>{{ $data->email }}</td>
                 <td>{{ $data->role }}</td>
                 <td>
                     <a href="{{url('admin/role-edit/'.$data->id)}}" class="badge badge-pill btn-primary px-3 py-2">Edit</a>
                         <a href="{{url('admin/delete-user/'.$data->id)}}" class="badge badge-pill btn-danger px-3 py-2">Delete</a>
+                        <a href="{{url('admin/user-profile/'.$data->id)}}" class="badge badge-pill btn-primary px-3 py-2">Profile</a>
                     </td>
 
                 </tr>

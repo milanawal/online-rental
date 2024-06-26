@@ -78,6 +78,7 @@
                           @csrf
 
                               <h3 style="font-weight:bold;">{{$Product->name}}</h3>
+                              <p>Posted by {{ $verified==true?'verified':'unverified' }} user</p>
                             
                               <p>{{$Product->description}}</p>
                               
@@ -89,7 +90,7 @@
                                 <!-- <p> 50 % of cost for deposite : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$Product->cost * 50/100}}</strong> Product Value</p> -->
 
                                 <div class="col-md-6" style="margin-left:-20px;">  
-                                  <input type="number" class="form-control quantity" name="quantity" value="{{ $Product->quantity==null || $Product->quantity==0?0:$Product->quantity}}" placeholder="Quantity">
+                                  <input type="number" class="form-control quantity" name="quantity" max="{{   $Product->quantity }}" min="0" value="{{ $Product->quantity==null || $Product->quantity==0?0:$Product->quantity}}" placeholder="Quantity">
                                 </div>
                                 <!-- <div class="col-md-6" style="margin-left:-20px;">  
                                   <input type="number" class="form-control days" name="days" placeholder="Days for Rent">

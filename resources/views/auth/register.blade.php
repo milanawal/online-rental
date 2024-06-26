@@ -61,6 +61,19 @@ Register - Gainloe
                                 <div class="form-group row  justify-content-center ">
 
                                     <div class="col-md-6">
+                                        <input id="mnumber" type="mnumber" class="form-control @error('mnumber') is-invalid @enderror" name="mnumber" value="{{ old('mnumber') }}" required placeholder="{{ __('Mobile Number') }}" autocomplete="mnumber">
+
+                                        @error('mnumber')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row  justify-content-center ">
+
+                                    <div class="col-md-6">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="{{ __('Password') }}" autocomplete="new-password">
 
                                         @error('password')

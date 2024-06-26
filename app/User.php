@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\BankDetail;
+use App\Models\Profile;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -42,6 +43,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function bankDetail()
     {
         return $this->hasOne(BankDetail::class);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 
     public function getEmailForVerification()
