@@ -9,31 +9,10 @@
 
       <!-- Grid column -->
       <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h6 class="text-uppercase mb-4 font-weight-bold">GAINLOE</h6>
-        <p>Gainaloe Sustainable Affordable Fashionable Fabrics. Helping to the famers creating extra revenue. Empowerment of women by giving employment as per their work.</p>
+        <h6 class="text-uppercase mb-4 font-weight-bold">Online Rental System</h6>
+        <p>Welcome to Online Rental System, your go-to online rental system. We connect people and businesses, making it easy to rent and list products. Enjoy a wide range of items, from electronics to furniture, all in one secure and user-friendly platform.</p>
        
       </div>
-      <!-- Grid column -->
-
-      <hr class="w-100 clearfix d-md-none">
-
-      <!-- Grid column -->
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-        <p>
-          <a href="{{url('Shop/Flowers-Fruits-Basket-Set')}}" target="_blank">Flowers / Fruits Basket Set </a>
-        </p>
-        <p>
-          <a href="{{url('Shop/Dusbin')}}" target="_blank">Dusbin</a>
-        </p>
-        <p>
-          <a href="{{url('Shop/Mat')}}" target="_blank">Mat</a>
-        </p>
-        <p>
-          <a href="{{url('Shop/Containers')}}" target="_blank">Containers  </a>
-        </p>
-      </div>
-      <!-- Grid column -->
 
       <hr class="w-100 clearfix d-md-none">
 
@@ -62,13 +41,11 @@
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
         <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
         <p>
-          <i class="fas fa-home mr-3"></i>  SKU, Anantapur -515004</p>
+          <i class="fas fa-home mr-3"></i>  Kathmandu, Nepal</p>
         <p>
-          <i class="fas fa-envelope mr-3"></i> rahulvijayanagaram@gmail.com</p>
+          <i class="fas fa-envelope mr-3"></i> support@onlinerental.com</p>
         <p>
-          <i class="fas fa-phone mr-3"></i> Rahul : +91 9177889021</p>
-        <p>
-          <i class="fas fa-phone mr-3"></i>Sandeep : +91 9989910822</p>
+          <i class="fas fa-phone mr-3"></i> Online Rental : +977 9842*******</p>
       </div>
       <!-- Grid column -->
 
@@ -77,23 +54,6 @@
 
     <hr>
 
-    <!-- Grid row -->
-    <div class="row d-flex align-items-center">
-
-      <!-- Grid column -->
-      <div class="col-md-7 col-lg-8">
-
-        <!--Copyright-->
-        <p class="text-center text-md-left">© 2021 Copyright:
-          <a href="#">
-            <strong>gainaloe.com</strong>
-          </a>
-          <br>
-          <span> Developed by <a href="https://www.rahulvijayam.com" target="_blank" style=" font-family: 'Balsamiq Sans', cursive;"><u>Rahul</u></a> </span>
-        </p>
-       
-      </div>
-      <!-- Grid column -->
 
       <!-- Grid column -->
       <div class="col-md-5 col-lg-4 ml-lg-0">
@@ -102,22 +62,22 @@
         <div class="text-center text-md-right">
           <ul class="list-unstyled list-inline">
             <li class="list-inline-item">
-              <a href="https://www.facebook.com/rahulvijayam/" class="btn-floating btn-sm rgba-white-slight mx-1" target="_blank">
+              <a href="https://www.facebook.com" class="btn-floating btn-sm rgba-white-slight mx-1" target="_blank">
                 <i class="fab fa-facebook-f"></i>
               </a>
             </li>
             <li  class="list-inline-item">
-              <a href="https://twitter.com/RahulVijayam" class="btn-floating btn-sm rgba-white-slight mx-1" target="_blank">
+              <a href="https://twitter.com" class="btn-floating btn-sm rgba-white-slight mx-1" target="_blank">
                 <i class="fab fa-twitter"></i>
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="https://www.instagram.com/rahulvijayam/" class="btn-floating btn-sm rgba-white-slight mx-1" target="_blank">
+              <a href="https://www.instagram.com" class="btn-floating btn-sm rgba-white-slight mx-1" target="_blank">
                 <i class="fab fa-instagram"></i>
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="https://www.linkedin.com/in/rahulvijayam/" class="btn-floating btn-sm rgba-white-slight mx-1" target="_blank">
+              <a href="https://www.linkedin.com" class="btn-floating btn-sm rgba-white-slight mx-1" target="_blank">
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </li>

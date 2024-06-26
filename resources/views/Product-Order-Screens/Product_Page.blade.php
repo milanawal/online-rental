@@ -78,48 +78,13 @@
                           @csrf
 
                               <h3 style="font-weight:bold;">{{$Product->name}}</h3>
-                          @if($Product->rating==1)
-                            <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star "></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                          @elseif($Product->rating==2)
-                          <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star "></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                            @elseif($Product->rating==3)
-                            <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                          
-                            @elseif($Product->rating==4)
-                            <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star"></span>
-                          
-                            @else
-                            <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                            @endif
-                          
-                          
                             
                               <p>{{$Product->description}}</p>
                               
 
                                 <input type="hidden"   name="product_id"   min=0 value="{{$Product->id}}" required class="form-control product_id">
                                    <p> Price : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$Product->price}}</strong> per/day</p>
-                                      <?php echo $Product->additional_info;?>
+                                      <p><?php echo $Product->additional_info;?></p>
                                 <p> Cost : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$Product->cost}}</strong> Product Value</p>
                                 <!-- <p> 50 % of cost for deposite : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$Product->cost * 50/100}}</strong> Product Value</p> -->
 

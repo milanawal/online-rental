@@ -68,8 +68,6 @@ $(document).ready(function (){
               <li><a href="/#About">About</a></li>
               <li><a href="/#Products">Products</a></li>
               
-              <li><a href="/#Team">Team</a></li>
-              
               <li><a href="{{url('Help')}}"><i class="fas fa-headset"  ></i> Help</a></li>   
              
                 @if (Route::has('login'))
