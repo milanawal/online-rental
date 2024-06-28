@@ -325,14 +325,14 @@ function closeNav() {
                                                        <div class="col-md-6">
                                                            <div class="form-group">
                                                             <label> Bank Name</label>
-                                                           <input type="text" value="{{Auth::user()->bankDetail->bank_name}}" name="bank_name" class="form-control">
+                                                           <input type="text" value="{{Auth::user()->bankDetail->bank_name??''}}" name="bank_name" class="form-control">
                                                            </div>
                                                        </div>
                            
                                                        <div class="col-md-4">
                                                            <div class="form-group">
                                                             <label> Branch</label>
-                                                           <input type="text" value="{{Auth::user()->bankDetail->branch}}" name="branch"   class="form-control">
+                                                           <input type="text" value="{{Auth::user()->bankDetail->branch??''}}" name="branch"   class="form-control">
                                                            </div>
                                                        </div>
                                                    </div>
@@ -340,19 +340,19 @@ function closeNav() {
                                                        <div class="col-md-4">
                                                            <div class="form-group">
                                                             <label> Account Name</label>
-                                                           <input type="text" value="{{Auth::user()->bankDetail->account_name}}"  name="account_name" class="form-control">
+                                                           <input type="text" value="{{Auth::user()->bankDetail->account_name??''}}"  name="account_name" class="form-control">
                                                            </div>
                                                        </div>
                                                        <div class="col-md-4">
                                                            <div class="form-group">
                                                             <label>Account Number</label>
-                                                           <input type="text" value="{{Auth::user()->bankDetail->account_number}}"  name="account_number" class="form-control">
+                                                           <input type="text" value="{{Auth::user()->bankDetail->account_number??''}}"  name="account_number" class="form-control">
                                                            </div>
                                                        </div>
                                                        <div class="col-md-4">
                                                            <div class="form-group">
                                                             <label>Phone (Used for banking)</label>
-                                                           <input type="text" value="{{Auth::user()->bankDetail->phone_number}}"  name="phone" class="form-control">
+                                                           <input type="text" value="{{Auth::user()->bankDetail->phone_number??''}}"  name="phone" class="form-control">
                                                            </div>
                                                        </div>                                                 
                            
