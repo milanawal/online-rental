@@ -15,6 +15,7 @@ use App\Models\Category;
 use App\Models\BankDetail;
 use App\Models\Transaction;
 use Illuminate\Auth\Events\Verified;
+use Session;
 
 
 class UserController extends Controller
