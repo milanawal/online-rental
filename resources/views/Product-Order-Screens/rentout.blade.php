@@ -26,7 +26,7 @@
           //console.log(data)
           $('#dynamic_content').html(data)
          
-          $('#writetitle').html('Shipping & Payment Details') 
+          $('#writetitle').html('Choose your payment method') 
            
          
         }
