@@ -146,7 +146,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
     	               
                     $welcomemessage='Hello '.$name.'<br>';
                     $emailbody='Your Order Was Placed Successfully<br>
-                    <p>Thank you for your order. We’ll send a confirmation when your order ships. Your estimated delivery date is 3-5 working days. If you would like to view the status of your order or make any changes to it, please visit Your Orders on <a href="https://www.gainaloe.com">Gainaloe.com</a></p>
+                    <p>Thank you for your order. We’ll send a confirmation when your order ships. Your estimated delivery date is 3-5 working days. If you would like to view the status of your order or make any changes to it, please visit Your Orders on <a href="https://www.onlinerental.com">Onlinerental.com</a></p>
                     <h4>Order Details: </h4><p> Order No:'.$id.$O_Details.'</p>
                         <p><strong>Delivery Address:</strong>
                     '.$Delivery_Address.'</p>
@@ -162,8 +162,8 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                         // ($loginid, $name,$id)
                         // {
                         //     $message->to($loginid, $name)->subject
-                        //     ('Your Gainaloe.com order '.$id.' is Confirmed');
-                        //     $message->from('codetalentum@btao.in','Gainaloe');
+                        //     ('Your Onlinerental.com order '.$id.' is Confirmed');
+                        //     $message->from('codetalentum@btao.in','OnlineRental');
                             
                         // });
                 

@@ -6,7 +6,7 @@
 <section class="container">
 <h1 align="center" class="black-text col-md-12" style="font-weight:bold;">Shipping & Returns</h1>
   
-  <p align="center">Gainaloe will give more priority to the customer's happiness.We deliver the orders at the best quality with the best pricing</p>
+  <p align="center">Online Rental System will give more priority to the customer's happiness.We deliver the orders at the best quality with the best pricing</p>
   <div class="row text-center text-md-left">
     <div class="col-md-6 mb-4">
     <img class="card-img-top  animated pulse infinite slow" src="https://codyhouse.co/demo-templates/mercurio/assets/img/card-v8-img-3.jpg" alt="Card image cap">

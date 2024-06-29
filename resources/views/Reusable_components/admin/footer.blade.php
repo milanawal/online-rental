@@ -9,12 +9,12 @@
   <div  class="footer-copyright text-center py-3" style=background:black>
         <div class="row" style="font-size:15px;">
             <div class="col-md-3">
-                    © 2020 Copyright:
-                <a href="https://rahulvijayam.com/"> Gainaloe</a>
+                    © 2024 Copyright:
+                <a href="https://rahulvijayam.com/"> Online Rental System</a>
             </div>
             
             <div  id="developedbybtaoteam" class="col-md-9" >
-                 <span class="px-5"> Developed by Rahul Vijayanagaram </span>
+                 <span class="px-5"> Developed Online Rental System </span>
             </div>
         </div>
   

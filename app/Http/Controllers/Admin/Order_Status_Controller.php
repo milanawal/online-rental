@@ -52,7 +52,7 @@ class Order_Status_Controller extends Controller
                             $name=$User->name;
                             
         	                $welcomemessage='Hello '.$name.'';
-        	                $emailbody='<p>Your Order has been Shipped. Your estimated delivery date is 3-5 working days. If you would like to view the status of your order or make any changes to it, please visit Your Orders on <a href="https://www.gainaloe.com">Gainaloe.com</a></p><br>
+        	                $emailbody='<p>Your Order has been Shipped. Your estimated delivery date is 3-5 working days. If you would like to view the status of your order or make any changes to it, please visit Your Orders on <a href="https://www.onlinerental.com">Onlinerental.com</a></p><br>
         	                <h4>Order Details: </h4><p> Order No:'.$id.$Order_Details.'</p>
         	                 <p><strong>Delivery Address:</strong>
         	               '.$Delivery_Address.'</p>
@@ -69,8 +69,8 @@ class Order_Status_Controller extends Controller
         	                    ($loginid, $name,$id)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        (' Your Gainaloe.com order '.$id.' is Shipped');
-        	                        $message->from('codetalentum@btao.in','Gainaloe');
+        	                        (' Your online rental order '.$id.' is Shipped');
+        	                        $message->from('codetalentum@btao.in','OnlineRental');
         	                        
         	                    });
            /* Email Alert Ends Here*/
@@ -117,8 +117,8 @@ class Order_Status_Controller extends Controller
         	                    ($loginid, $name,$id)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        ('Your Gainaloe.com order '.$id.' is Delivered');
-        	                        $message->from('codetalentum@btao.in','Gainaloe');
+        	                        ('Your Onlinerental.com order '.$id.' is Delivered');
+        	                        $message->from('codetalentum@btao.in','OnlineRental');
         	                        
         	                    });
            /* Email Alert Ends Here*/
@@ -196,8 +196,8 @@ class Order_Status_Controller extends Controller
         	                    ($loginid, $name,$id)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        ('Your Gainaloe.com order '.$id.' is Cancelled');
-        	                        $message->from('codetalentum@btao.in','Gainaloe');
+        	                        ('Your Onlinerental.com order '.$id.' is Cancelled');
+        	                        $message->from('codetalentum@btao.in','OnlineRental');
         	                        
         	                    });
            /* Email Alert Ends Here*/

@@ -102,8 +102,8 @@ Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
         	                    ($loginid, $name,$O_id)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        ('Your Gainaloe.com Order Payment '.$O_id.' is Successfully Paid');
-        	                        $message->from('codetalentum@btao.in','Gainaloe');
+        	                        ('Your Online Rental Order Payment '.$O_id.' is Successfully Paid');
+        	                        $message->from('codetalentum@btao.in','Online Rental System');
         	                        
         	                    });
                         
@@ -141,7 +141,7 @@ Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
                       $welcomemessage='Hello '.$name.'';
         	                $emailbody=' <p>Your Payment '.$amount.' towards Order '.$O_id. 'is failed. <br>
         	                You Can Try Again by using the following link: <br>
-        	                <a href="https://www.gainaloe.com/proceed_to_Payment/'.$O_id.'">https://www.gainaloe.com/proceed_to_Payment/'.$O_id.'</a></p>
+        	                <a href="https://www.onlinerental.com/proceed_to_Payment/'.$O_id.'">https://www.onlinerental.com/proceed_to_Payment/'.$O_id.'</a></p>
         	                <h4>Order Details: </h4><p> Order No:'.$O_id.$Order_Details.'</p>
         	                 <p><strong>Delivery Address:</strong>
         	               '.$Delivery_Address.'</p>
@@ -158,8 +158,8 @@ Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
         	                    ($loginid, $name,$O_id)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        ('Your Gainaloe Order '.$O_id.' Payment is Failed');
-        	                        $message->from('codetalentum@btao.in','Gainaloe');
+        	                        ('Your Online Rental Order '.$O_id.' Payment is Failed');
+        	                        $message->from('codetalentum@btao.in','Online Rental');
         	                        
         	                    });
                     Session::forget('cart');
