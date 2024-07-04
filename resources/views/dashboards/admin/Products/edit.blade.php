@@ -49,10 +49,12 @@
                     <a class="nav-link" id="SEO-tab" data-toggle="tab" href="#SEO" role="tab" aria-controls="SEO"
                       aria-selected="false">SEO</a>
                   </li>
+                  @if(auth()->user()->role=='admin')
                   <li class="nav-item">
                       <a class="nav-link" id="pstatus-tab" data-toggle="tab" href="#pstatus" role="tab" aria-controls="pstatus"
                         aria-selected="false">Delivery Charges & Product Status</a>
                     </li>
+                    @endif
                   <li class="nav-item">
                       <a class="nav-link" id="Additional_Information-tab" data-toggle="tab" href="#Additional_Information" role="tab" aria-controls="Additional_Information"
                         aria-selected="false">Additional Information</a>

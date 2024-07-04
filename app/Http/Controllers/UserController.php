@@ -263,11 +263,13 @@ class UserController extends Controller
                 throw new AuthorizationException;
             }
     
-            if ($user->hasVerifiedEmail()) {
+            if ($user->email_verified==0) {
                 $user->email_verified = 1;
                 $user->email_verified_at = time();
                 $user->save();
-                return redirect()->intended('dashboard')->with('message', 'Your email is already verified.');
+                return redirect()->intended('dashboard')->with('successstatus', 'Your email is verified.');
+            }elseif($user->email_verified==1){
+                return redirect()->intended('dashboard')->with('successstatus', 'Your email is already verified.');
             }
     
             if ($user->markEmailAsVerified()) {

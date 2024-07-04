@@ -129,6 +129,10 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                         $OrderProduct->created_at=date('Y-m-d H:i:s');
                         $OrderProduct->save(); 
 
+                        $product = Products::where('id',$productId)->first();
+                        $product->quantity = $product->quantity -$details['item_quantity'];
+                        $product->save(); 
+
                     }
                 
                 }

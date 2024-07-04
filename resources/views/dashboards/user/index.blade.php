@@ -62,6 +62,17 @@ function closeNav() {
         </script>
 @endif
 
+@if (session('successstatus'))
+
+        <script>
+            $(document).ready(function () {
+
+        $('#centralModalSuccess').modal('show');
+
+        });
+        </script>
+@endif
+
  
                  <!-- Home Section Starts Here-->
                             <div class="container">
@@ -173,5 +184,39 @@ function closeNav() {
     <!--/.Content-->
   </div>
 </div>
+
+
+
+<div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog modal-notify modal-success" role="document">
+     <!--Content-->
+     <div class="modal-content">
+       <!--Header-->
+       <div class="modal-header">
+         <p class="heading lead"> Success</p>
+
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true" class="white-text">&times;</span>
+         </button>
+       </div>
+
+       <!--Body-->
+       <div class="modal-body">
+         <div class="text-center">
+           <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+           <p>{{session('successstatus')}} </p>
+         </div>
+       </div>
+
+       <!--Footer-->
+       <div class="modal-footer justify-content-center">
+         
+         <a type="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">Close</a>
+       </div>
+     </div>
+     <!--/.Content-->
+   </div>
+ </div>
   
 @endsection
