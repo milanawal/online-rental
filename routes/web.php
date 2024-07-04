@@ -38,11 +38,12 @@ Route::get('/Terms-and-Conditions', function () {
 Route::get('/Contact', function () {
     return view('Contact');
 });
-
+Route::get('/products', 'FrontendController@allProducts')->name('products');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 /*

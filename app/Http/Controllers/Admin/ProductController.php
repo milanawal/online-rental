@@ -98,6 +98,7 @@ class ProductController extends Controller
     }
     public function update(Request $request, $id)
     {
+        
         $products=Products::find($id);
         $products->name= $request->input('name'); 
         // $products->url= $request->input('url');
@@ -117,6 +118,7 @@ class ProductController extends Controller
         
            $products->delivery_charges= $request->input('delivery_charges');
            $products->additional_info= $request->input('additional_info');
+           $products->featured= $request->has('featured')?1:0;
 
         $image1 =$request->file('image1');
         if($request->hasfile('image1'))

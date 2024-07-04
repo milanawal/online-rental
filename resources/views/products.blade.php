@@ -23,36 +23,7 @@
   $( ".wow" ).addClass( "fadeInLeft" );
 });
 </script>
- <div id="About" class="container-fluid" style="background:white;">
-    <br>
-      <div class="row ">
-        <div class="col-md-4 wow animated zoomIn slow">
-        <img src="{{asset('Img/for-rent.jpg')}}" alt="" class="img-fluid" >
-        </div>
-        <div  align="center" class="col-md-8 wow animated flash slow">
-            <h1 class="black-text" style="font-weight:bold;">How It Works</h1>
-            <div class="col-md-3" style=" border-bottom: 2px solid #003399;"></div>
-            <div class="row my-5" style="font-size:30px; font-family: 'Balsamiq Sans', cursive;">
-              <div class="col-md-6" >
-                    <ul align="left" style="list-style:none;">
-                        <li><i class="fab fa-circle-dot"></i> Step 1: List Your Products</li><br>
-                        <li><i class="fab fa-circle-dot"></i> Step 2: Find What You Need</li>
-                    </ul>
-              </div>
-              <div class="col-md-6">
-                    <ul align="left" style="list-style:none;">
-                    <li><i class="fab fa-circle-dot"></i> Step 3: Enjoy Secure Transactions</li><br>
-                  </ul>
-              </div>
-            </div>
-            <p  align="left" class="mx-5" style="margin-top:-30px; font-family: 'Balsamiq Sans', cursive;">
-              <a href="{{url('about')}}"  target="_blank" class="btn btn-dark">Know More</a>
-              </p>
-                                            
-        </div>
-      </div>
-      
-</div>
+
 
 <!-- About completed Here -->
 
@@ -66,8 +37,12 @@ $Products=App\Models\Products::where('status','=','1')->where('featured',1)->tak
     <div align="center">
         <p  class="col-md-2" style=" border-bottom: 2px solid #003399;"></p>
     </div>
+    @foreach($categories as $category)
+        <h1 class="black-text" style="font-weight:bold;">{{$category->name}}</h1> 
     <div  class="row my-4 px-4 "  style="width:100%;" >
-      @foreach($Products as $item)
+        
+        @if(!empty($category->products))
+      @foreach($category->products as $item)
       <div class="col-md-3 px-4 my-5"  >
           <a href="{{url('Shop/'.$item->url)}}">
               <img src=" {{asset('Uploads/Products/'.$item->image1)}}" alt="" class="img-fluid"  >
@@ -116,95 +91,21 @@ $Products=App\Models\Products::where('status','=','1')->where('featured',1)->tak
             
           </div>
       </div>  
+      
      @endforeach
-     
+   
     </div>
+    @endif
+    @endforeach
 
-    <a href="products" class="btn  btn-success    "> View All</a>
    
     <hr class="col-md-6"> 
 </section>
 <!-- Products Ends Here --> 
-<section  class="slideanim"  id="testimonialsdesktopmode" align="center" style="margin-top:-50px;" >
- 
-     @include('components.testimonialsdesktopmode') 
-</section>
-<section  class="slideanim"  id="testimonialsmobilemode" align="center"  style="margin-top:-70px;"  >
- 
-  @include('components.testimonialsmobilemode') 
-</section>
+
+
 <!-- ======= Contact Section Starts Here ======= --> 
  
-  <section id="contact" class="contact" style="background:white;">
-          <div class="container ">
-
-            <div class="section-title">
-            
-              <h2>Contact</h2>
-              <p style=" font-family: 'Balsamiq Sans', cursive;">  </p>
-            </div>
-
-            <div class="row wow animated zoomIn slow">
-
-              <div class="col-lg-5 d-flex align-items-stretch">
-                <div align="left" class="info">
-                  <div class="address" >
-                  <i class="fas fa-map-marker-alt"></i>
-                    <h4>Location:</h4>
-                    <p>Kathmandu, Nepal</p>
-                  </div>
-
-                  <div class="email">
-                  <i class="fas fa-envelope"></i>
-                    <h4>Email:</h4>
-                    <p>support@onlinerental.com</p>
-                  </div>
-
-                  <div class="phone">
-                  <i class="fas fa-phone"></i>
-                    <h4>Call:</h4>
-                    <p>Online Rental : +977 9842*******</p>
-                  </div>
-
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53719.93686121613!2d85.28493302080203!3d27.70895425220774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600%2C%20Nepal!5e1!3m2!1sen!2sin!4v1719244814148!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
-                </div>
-
-              </div>
-
-              <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                <form action="send-email" method="post" role="form" class="php-email-form">
-                    @csrf
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="name">Your Name</label>
-                      <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                      <div class="validate"></div>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="name">Your Email</label>
-                      <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
-                      <div class="validate"></div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Subject</label>
-                    <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Message</label>
-                    <textarea class="form-control" name="message" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
-                    <div class="validate"></div>
-                  </div>
-                 
-                  <div class="text-center"><button type="submit">Send Message</button></div>
-                </form>
-              </div>
-
-            </div>
-
-          </div>
-  </section>
 
 
 <!--Modal: modalSocial-->

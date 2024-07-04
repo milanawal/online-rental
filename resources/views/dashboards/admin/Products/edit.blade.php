@@ -88,13 +88,6 @@
                           </div>
                           
 
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                  <label> Custom URL(Slug)</label>
-                                  <input type="text" class="form-control" name="url" placeholder="Custom URL" value="{{$Products->url}}">
-                              </div>
-                          </div>
-
                           <div class="col-md-12">
                               <div class="form-group">
                                   <label>Small Description</label>
@@ -103,11 +96,20 @@
                           </div>
 
                           <div class="col-md-6"   >
-                              <div class="form-group">
-                                  <label>Priority</label>
-                                  <input type="number" name="priority" min="0" class="form-control" value="{{$Products->priority}}">
-                              </div>
+                            <div class="form-group">
+                                <label>Featured</label>
+                                @if($Products->featured==1)
+                                    <input type="checkbox"  name="featured"  checked>
+                                @else
+                                    <input type="checkbox"  name="featured" >
+                                @endif
+                                     
+                            </div>
+                            <p>
+                                Note: If you check mark then, the product will be displayed on home page
+                            </p>
                           </div>
+
 
 
                           <div class="col-md-6"   >
@@ -116,26 +118,9 @@
                                   <input type="text" name="price" min="0" class="form-control" value="{{$Products->price}}">
                               </div>
                           </div>
-                          <div class="col-md-6"   >
-                              <div class="form-group">
-                                  <label>Discount ( in terms of %)</label>
-                                  <input type="number" name="Discount" min="0" class="form-control" value="{{$Products->discount}}">
-                              </div>
-                          </div>
+                          
   
-                          <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Rating</label>
-                                <select class="form-control" name="rating">
-                                    <option value="{{$Products->rating}}" disabled>{{$Products->rating}}</option>
-                                     <option value="1">1</option>
-                                     <option value="2">2</option>
-                                      <option value="3">3</option>
-                                       <option value="4">4</option>
-                                        <option value="5">5</option>
-                                </select> 
-                            </div>
-                        </div>
+                          
                           <div class="col-md-12">
                               <div class="form-group">
                               <button type="submit" class="btaobtn btaobtn-success">Update</button>

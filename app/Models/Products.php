@@ -27,4 +27,9 @@ class Products extends Model
         'cost',
         'payment_status'
     ];
+
+    function category(){
+
+        return $this->belongsTo(Category::class);
+    }
 }
