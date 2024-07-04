@@ -104,9 +104,14 @@ aria-hidden="true">
                                               <option value="pending">pending</option>
                                               <option value="completed">completed</option>
                                                <option value="Refunded">Refunded</option>
+                                               <option value="Deposite-Refunded">Deposite Refunded</option>
                                              
                                             </select>
+                                            @if(session('p_status')=='Deposite-Refunded')
+                                    <button type="submit" disabled>Update</button>
+                                    @else
                                     <button type="submit">Update</button>
+                                    @endif
                                     </form>
                                      </td>
                                   </tr>

@@ -24,7 +24,7 @@
                         $total += $details['item_price'] * $details['item_quantity'] * $details['days'] ?>
                         <?php $delivery_charges = $delivery_charges + $details['delivery_charges'] ?>
                         <?php 
-                                  $deposite += $details['deposite_amount']
+                                  $deposite += $details['deposite_amount']* $details['item_quantity']
                                  ?>
                         @php  
                         $order_details=$order_details.'<br>'.
@@ -51,6 +51,7 @@
 
             $service_charge = (15 / 100) * $total;
             $total =  $total +ceil($service_charge) + $deposite + $delivery_charges;
+
             $signature = "total_amount=".$total.",transaction_uuid=".$tuid.",product_code=EPAYTEST";
             $secretKey = "8gBm/:&EnhH.1/q";
             

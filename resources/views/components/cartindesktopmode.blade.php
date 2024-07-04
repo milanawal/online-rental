@@ -25,7 +25,7 @@
 @endif  
 <div class="px-5" style="margin-top:-4%;">
     <div class="shopping-cart">
-        <?php $total = 0 ?>
+        <?php $total = 0;$deposite = 0; ?>
         @if(session('cart'))
         
             <div class="shopping-cart-table">
@@ -40,13 +40,15 @@
                             <th class="cart-product-name">Product Name</th>
                             <th class="cart-qty">Quantity</th>
                             <th class="cart-total">Price</th>
+                            <th class="cart-total">Deposite</th>
+                            <th class="cart-total">Delivery Charge</th>
                             <th class="cart-romove">Remove</th>
                             </tr>
                             </thead>
                             
                             <tbody class="my-auto">
                                 @foreach(session('cart') as $id => $details)
-                                <?php $total += $details['item_price'] * $details['item_quantity'] ?>
+                                <?php $total += $details['item_price'] * $details['item_quantity'] * $details['days'] ?>
                                 
                                     <tr class="cartpage">
                                         <td class="cart-image">
@@ -74,9 +76,21 @@
                                         <td class="cart-product-grand-total">
                                             <strong>
                                                 <span class="cart-grand-total-price">
-                                                <strike class="red-text" style="font-size:20px;">{{ $details['item_price']  * $details['item_quantity']}}/-</strike> </span>
-                                                <span class="green-text" style="font-size:25px;">{{ $details['item_price'] * $details['item_quantity']}} /- </span><br>
-                                                <span>{{$details['contentforofferprice']}}</span>
+                                                <span class="green-text" style="font-size:25px;">{{ $details['item_price'] * $details['item_quantity'] * $details['days']}} /- </span><br>
+                                            </strong>
+                                        </td>
+                                        <td class="cart-product-grand-total">
+                                            <strong>
+                                            <?php $deposite += $details['deposite_amount'] *  $details['item_quantity'] ?>
+                                                <span class="cart-grand-total-price">
+                                                <span class="green-text" style="font-size:25px;">{{ $details['deposite_amount'] *  $details['item_quantity'] }} /- </span><br>
+                                            </strong>
+                                        </td>
+                                        <td class="cart-product-grand-total">
+                                            <strong>
+                                               
+                                                <span class="cart-grand-total-price">
+                                                <span class="green-text" style="font-size:25px;">{{ $details['delivery_charges']}} /- </span><br>
                                             </strong>
                                         </td>
                                         <td style="font-size: 20px;color:black;">
@@ -88,6 +102,7 @@
                                     </form>
                                         </td>
                                     </tr>
+                                    {{ $total +=$deposite+$details['delivery_charges'] }}
                                 @endforeach
                             </tbody>
                             </table>

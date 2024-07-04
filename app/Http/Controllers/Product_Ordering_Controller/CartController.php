@@ -95,6 +95,9 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                                 ]
                         ];   
                         session()->put('cart', $cart);
+                        $products->quantity = $products->quantity - $quantity;
+                        // dd($products);
+                        $products->save();
                         return response()->json(['status'=>'Added to Cart']);
                 
                     }
@@ -125,6 +128,8 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                              
                                 ];
                                 session()->put('cart', $cart);
+                                $products->quantity = $products->quantity - $quantity;
+                                $products>save();
                                 return response()->json(['status'=>'Added to Cart']);
                     }
                 } 
@@ -184,6 +189,10 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
             if($request->id) {
                 $cart = session()->get('cart');
                if(isset($cart[$request->id])) {
+                    $removeCart = $cart[$request->id];
+                    $products = Products::find($request->id);
+                    $products->quantity = $products->quantity+$removeCart['item_quantity'];
+                    $products->save();
                     unset($cart[$request->id]);
                     session()->put('cart', $cart);
                 }

@@ -13,7 +13,10 @@
                                <th>Order_Id</th>
                                <th>Order Details</th>
                                <th>Delivery Address</th>
-                               <th>Total Price (INR)</th>
+                               <th>Total Price</th>
+                               <th>Actual Cost</th>
+                               <th>Deposite Amount</th>
+                               <th>Delivery Charge</th>
    
                                 
                                <th>Action</th>
@@ -32,6 +35,9 @@
                                <td><?php echo $item->Order_Details?></td>
                                <td><?php echo $item->Delivery_Address ?></td>
                                <td>{{$item->Amount}}</td>
+                               <td>{{$item->Payment}}</td>
+                               <td>{{$item->deposite_Amount}}</td>
+                               <td>{{$item->delivery_charge}}</td>
                                
                                <td> 
                                    <a href="{{url('Order-Status/'.$item->id.'')}}" class="badge btaobtn btaobtn-primary px-2 py-2 ">Check Status</a>

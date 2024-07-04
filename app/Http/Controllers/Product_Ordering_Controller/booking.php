@@ -56,7 +56,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
         }
         public function  order_proceed(Request $request)
         {
-               
+            //    dd('fsdf');
                 /* Delivery Details*/
                 $address1=auth()->user()->profile->address_1;
                 $address2=auth()->user()->profile->address_2;
@@ -75,7 +75,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
             /* Order Details Starts Here*/
                 if(session('cart'))
                 {
-                    $total=0;$count=0;$order_details='';$delivery_charges=0;                    
+                    $total=0;$count=0;$order_details='';$delivery_charges=0;$deposite=0;                    
                     foreach (session('cart') as $id => $details) 
                     {
                         $count=$count +1 ;
@@ -87,13 +87,15 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                         $delivery_charges = $delivery_charges + $details['delivery_charges'] ;
                         $date = $details['start_date'] ;
                         $end_date = $details['end_date'] ;
+                        $sum = 0;
+                        $sum =  $details['deposite_amount']*$details['item_quantity'];
+                        $deposite += $sum;
                     }
                 
                 }
                 $service_charge = (15 / 100) * $total;
                 $promocode=null;
-                $Amount = $total + $delivery_charges +$service_charge;
-                
+                $Amount = $total +$deposite + $delivery_charges +$service_charge;
                 $O_Details=$order_details;
                 $Email_Id=Auth::user()->email;
                 $loginid=$Email_Id;
@@ -105,6 +107,10 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                  $Order->Order_Details=$O_Details;
                  $Order->Coupen_Code=$promocode;
                  $Order->Amount=$Amount;
+                 $Order->payment=$total+ $delivery_charges +$service_charge;
+                 $Order->deposite_Amount=$deposite;
+                 $Order->delivery_charge=$delivery_charges;
+                 
                  $Order->required_date = $date;
                  $Order->product_id = $productId;
                  $Order->paymentmode=$p_method;
@@ -130,7 +136,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                         $OrderProduct->save(); 
 
                         $product = Products::where('id',$productId)->first();
-                        $product->quantity = $product->quantity -$details['item_quantity'];
+                        // $product->quantity = $product->quantity -$details['item_quantity'];
                         $product->save(); 
 
                     }

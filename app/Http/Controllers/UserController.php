@@ -376,6 +376,10 @@ class UserController extends Controller
                 $transaction->transaction_code = $data->transaction_code; 
                 $transaction->status = 'payment_success';
                 $transaction->save();
+                $order = Order::find($transaction->Order_No);
+                $order->payment_status=1;
+                $order->p_status='completed';
+                $order->save();
                 Session::forget('cart');
                 return redirect("/Orders")->with('status','Order Placed Succesfully!');  
             }

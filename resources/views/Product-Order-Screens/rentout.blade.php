@@ -74,7 +74,10 @@
                                  ?>
 
                                 <?php 
-                                  $deposite += $details['deposite_amount']
+                                $sum = 0;
+                                  $sum =  $details['deposite_amount']*$details['item_quantity'];
+                                  $deposite += $sum;
+                                  
                                  ?>
                                 
 
@@ -116,10 +119,10 @@
                                             
                                             <p align="right" >
                                                 {{$details['item_quantity']}} X    {{$details['item_price']}} x  {{$details['days']}}
-                                                
+                                                : {{$details['item_quantity'] *    $details['item_price'] *  $details['days']}}
                                             </p>
 
-                                          <p> 20 % of cost for deposite : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$details['deposite_amount']}}</strong> Product Value</p>
+                                          <p> 20 % of cost for deposite : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">रु {{$details['deposite_amount']}} for each</strong> Product Value is {{ $deposite }}</p>
 
 
                                           <?php $delivery_charges = $delivery_charges + $details['delivery_charges'] ?>
@@ -135,23 +138,11 @@
                                         <p align="left" style="float:left;">
                                             SubTotal: 
                                         </p>
-                                        @if(session('promocode'))
                                         <p align="right" >
-                                                   <span class="cart-grand-total-price">
-                                                   <strike class="red-text" style="font-size:15px;">{{ $total }}/-</strike> </span>
-                                                    <span class="green-text" style="font-size:15px;" > 
-                                                        {{session('discount')}}   {{session('message')}}
-                                                                             
-                                                    </span>               
-                                        </p>
-                                      
-                                      
-                                        @else 
-                                        <p align="right" >
-                                            <i class="fas fa-rupee-sign " ></i>  {{$total}}  
+                                            <i class="fas fa-rupee-sign " ></i>  {{$total+$deposite +$delivery_charges}}  
                                         </p>
                                     
-                                        @endif
+                                       
                                       
                                         <hr>
                                     </li>
@@ -173,7 +164,7 @@
                                         </p>
                                         <h4 align="right" >
                                             <i class="fas fa-rupee-sign " ></i>  <strong>
-                                              {{ $total +ceil($service_charge) + $deposite + $delivery_charges - session('discount') * $total / 100     }}</strong> 
+                                              {{ $total +ceil($service_charge) + $deposite + $delivery_charges     }}</strong> 
                                         </h4>
                                     </li>    
                                     @endif
@@ -193,61 +184,6 @@
 </section>
        
    
-   
-  
-      <!--Modal: modalDiscount-->
-      <div class="modal fade right" id="modalDiscount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true" data-backdrop="true">
-        <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-danger" role="document">
-          <!--Content-->
-          <div class="modal-content">
-            <!--Header-->
-            <div class="modal-header">
-              <p class="heading">Have a Promo Code
-                <strong></strong>
-              </p>
-  
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" class="white-text">&times;</span>
-              </button>
-            </div>  
-  <form method="POST" action="apply-promocode">
-      @csrf
-            <!--Body-->
-            <div class="modal-body">
-  
-              <div class="row">
-                <div class="col-12">
-                  <p></p>
-                  <p class="text-center">
-                    <i class="fas fa-gift fa-4x"></i>
-                  </p>
-                </div>
-  
-                <div class="col-12">
-                  <input type="text" class="form-control" name="promo_code" placeholder="Enter Promo Code ">
-                  
-                </div>
-              </div>
-            </div>
-  
-            <!--Footer-->
-            <div class="modal-footer flex-center">
-              <button type="submit" class="btn btn-danger">Apply 
-                <i class="far fa-gem ml-1 white-text"></i>
-              </button>
-              <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">No, thanks</a>
-            </div>
-  </form>
-          </div>
-          <!--/.Content-->
-        </div>
-      </div>
-      <!--Modal: modalDiscount-->
-      
-      
-      
-      
       
       
    @if ($errors->any())

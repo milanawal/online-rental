@@ -118,7 +118,7 @@ class Order_Status_Controller extends Controller
         	                    {
         	                        $message->to($loginid, $name)->subject
         	                        ('Your Onlinerental.com order '.$id.' is Delivered');
-        	                        $message->from('codetalentum@btao.in','OnlineRental');
+        	                        $message->from('onlinerental.com','OnlineRental');
         	                        
         	                    });
            /* Email Alert Ends Here*/
@@ -135,6 +135,16 @@ class Order_Status_Controller extends Controller
 
        $Orders->p_status_Updated_By=$Auth->email;
         $Orders->update();
+        if($request->input('p_status')=='Deposite-Refunded'){
+          $orderProducts = OrderProducts::where('order_id',$id)->get();
+          if(!empty($orderProducts)){
+            foreach ($orderProducts as $key => $value) {
+              $product = Products::find($value->product_id);
+              $product->quantity = $product->quantity+$value->quantity;
+              $product->save();
+            }
+          }
+        }
         return redirect()->back()->with('status','Payment  Status Updated Succesfully');
 
      }
