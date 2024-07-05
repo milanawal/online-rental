@@ -205,9 +205,10 @@ class UserController extends Controller
 
         public function  ShowEditingScreen($id)
         {
+            $categories = Category::all();
         $Products = Products::find($id); 
 
-        return view("dashboards.user.productedit")->with('Products',$Products);
+        return view("dashboards.user.productedit")->with('Products',$Products)->with('categories',$categories);
         }
         
         function getMyOffers(){
@@ -286,7 +287,7 @@ class UserController extends Controller
         {
             $products=Products::find($id);
             $products->name= $request->input('name'); 
-            $products->url= $request->input('url');
+            // $products->url= $request->input('url');
             $products->description= $request->input('small_description');
             $products->price= $request->input('price');
             $products->discount= $request->input('Discount');
@@ -376,7 +377,7 @@ class UserController extends Controller
                 $transaction->transaction_code = $data->transaction_code; 
                 $transaction->status = 'payment_success';
                 $transaction->save();
-                $order = Order::find($transaction->Order_No);
+                $order = Order::where('id',$transaction->Oder_No)->first();
                 $order->payment_status=1;
                 $order->p_status='completed';
                 $order->save();

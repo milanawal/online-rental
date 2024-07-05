@@ -35,7 +35,7 @@
                                <td><?php echo $item->Order_Details?></td>
                                <td><?php echo $item->Delivery_Address ?></td>
                                <td>{{$item->Amount}}</td>
-                               <td>{{$item->Payment}}</td>
+                               <td>{{$item->payment}}</td>
                                <td>{{$item->deposite_Amount}}</td>
                                <td>{{$item->delivery_charge}}</td>
                                
@@ -45,12 +45,12 @@
                                
                                   
                                 
-                                 @if($item->Delivery_Status!='pending' || $item->Order_Cancel_Status==1)
+                                 <!-- @if($item->Delivery_Status!='pending' || $item->Order_Cancel_Status==1)
                                   <a href="{{url('Order-Status/'.$item->id.'')}}"    class="badge btaobtn btaobtn-danger px-2 py-2 disabled">Cancel Order</a>
                                   @else
                                       <a href="{{url('Order-Cancel/'.$item->id.'')}}" class="badge btaobtn btaobtn-danger px-2 py-2">Cancel Order</a>
                                
-                                 @endif
+                                 @endif -->
    
    
                                </td>

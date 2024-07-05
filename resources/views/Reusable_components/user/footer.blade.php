@@ -23,9 +23,9 @@
           <a href="{{url('about')}}" target="_blank">About Us</a>
         </p>
        
-        <p>
+        <!-- <p>
           <a href="{{url('Help')}}" target="_blank">Help</a>
-        </p>
+        </p> -->
         <p>
           <a href="{{url('register')}}" target="_blank">Signup</a>
         </p>

@@ -107,7 +107,7 @@
                                 </div>
                               <div class="col-md-12 my-3"  id="changethebuttons">
 
-                              @if($Product->quantity==null || $Product->quantity==0 || $Product->owner_id==Auth()->user()->id || Auth()->user()->email_verified==0 || empty(Auth()->user()->profile) || Auth()->user()->profile->verified == 0)
+                              @if((!Auth()->user()) || $Product->quantity==null || $Product->quantity==0 || (!empty(Auth()->user()) && ($Product->owner_id==Auth()->user()->id || Auth()->user()->email_verified==0 || empty(Auth()->user()->profile) || Auth()->user()->profile->verified == 0)))
                               <button class="btaobtn btaobtn-primary px-2 py-2 book-now-btn" disabled >Book</button>
 
                               @else

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('title')
-Login - Gainloe
+Login - ORS
 @endsection
 
 @section('keywords')
-Login in Gainloe, signin
+Login in ORS, signin
 
 @endsection
 

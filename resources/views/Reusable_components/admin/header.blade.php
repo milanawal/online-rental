@@ -16,7 +16,7 @@
               
               <li><a href="/#Startups">Team</a></li>
               
-              <li><a href="/#Startups"><i class="fas fa-headset"  ></i> Help</a></li>   
+              <!-- <li><a href="/#Startups"><i class="fas fa-headset"  ></i> Help</a></li>    -->
              
                 @if (Route::has('login'))
 

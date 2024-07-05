@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title') Gainloe @endsection
+@section('title') ORS @endsection
 @section('keywords')   @endsection
 @section('description')   @endsection
 @section('content')
@@ -44,10 +44,10 @@
                       <a class="nav-link" id="Images-tab" data-toggle="tab" href="#Images" role="tab" aria-controls="Images"
                         aria-selected="false">Images</a>
                     </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link" id="SEO-tab" data-toggle="tab" href="#SEO" role="tab" aria-controls="SEO"
                       aria-selected="false">SEO</a>
-                  </li>
+                  </li> -->
                   @if(auth()->user()->role=='admin')
                   <li class="nav-item">
                       <a class="nav-link" id="pstatus-tab" data-toggle="tab" href="#pstatus" role="tab" aria-controls="pstatus"
@@ -85,24 +85,17 @@
                           </div>
                           
 
-                          <!-- <div class="col-md-6">
+                           <div class="col-md-6">
                               <div class="form-group">
-                                  <label> Custom URL(Slug)</label>
-                                  <input type="text" class="form-control" name="url"  placeholder="Custom URL">
+                                  <label> Quantity</label>
+                                  <input type="number" class="form-control" name="quantity" min="1"  value="1" placeholder="Quantity">
                               </div>
-                          </div> -->
+                          </div> 
 
                           <div class="col-md-12">
                               <div class="form-group">
                                   <label>Small Description</label>
                                   <textarea rows="4" class="form-control"  name="small_description"   placeholder="Small Description About Product"></textarea>
-                              </div>
-                          </div>
-
-                          <div class="col-md-6"   >
-                              <div class="form-group">
-                                  <label>Priority</label>
-                                  <input type="number" name="priority" min="0"  class="form-control">
                               </div>
                           </div>
 

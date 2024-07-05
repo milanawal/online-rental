@@ -52,7 +52,7 @@ You Can Reset you password
                                    <p class="my-2"> 
                                           <a class="black-text" href="/">
                                                <i class="fas fa-arrow-left"></i>
-                                           <u>Back to Gainloe</u>
+                                           <u>Back to ORS</u>
                                            </a>
                                    </p> 
                                 </div>

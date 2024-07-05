@@ -37,6 +37,7 @@ class ProductController extends Controller
            $products->owner_id= Auth::user()->id;
            $products->category_id= $request->category_id;
            $products->cost= $request->cost;
+           $products->quantity= $request->quantity;
           
            $products->discount= $request->input('Discount');
            $products->priority= $request->input('priority');

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Register - Gainloe
+Register - ORS
 @endsection
 
 @section('keywords')

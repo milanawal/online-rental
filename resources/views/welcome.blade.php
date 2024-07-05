@@ -57,7 +57,11 @@
 <!-- About completed Here -->
 
 @php
-$Products=App\Models\Products::where('status','=','1')->where('featured',1)->take(8)->get();
+if(Auth()->user()){
+  $Products=App\Models\Products::where('status','=','1')->where('featured',1)->where('owner_id','!=',Auth()->user()->id)->take(8)->get();
+}else{
+  $Products=App\Models\Products::where('status','=','1')->where('featured',1)->take(8)->get();
+}
 @endphp
 <!-- Products Starts Here -->
 <section id="Products" align="center" class="px-5 wow animated fadeInUpBig fast" style=" font-family: 'Balsamiq Sans', cursive;">

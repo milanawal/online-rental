@@ -20,7 +20,7 @@
         <img src=" {{asset('public/Img/about.png')}}" alt="" class="img-fluid" >
         </div>
         <div  align="center" class="col-md-8">
-            <h1 class="black-text" style="font-weight:bold;">About Gainloe</h1>
+            <h1 class="black-text" style="font-weight:bold;">About ORS</h1>
             <div class="col-md-3" style=" border-bottom: 2px solid #003399;"></div>
             <div class="row my-5" style="font-size:30px;">
               <div class="col-md-6" >

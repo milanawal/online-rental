@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title') Gainloe About Us @endsection
+@section('title') About Us @endsection
 @section('keywords')   @endsection
 @section('description') @endsection
 @section('content')

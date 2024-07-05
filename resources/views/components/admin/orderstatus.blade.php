@@ -54,14 +54,21 @@ aria-hidden="true">
                                      <form action="admin-Update-Shipping-Status" method="POST">
                                                  @csrf
                                                  <input type="hidden" value="{{session('Order_id')}}" name="Order_id">
-                                            <input list="Shipping_Status" name="Shipping_Status" id="Shipping_Status" value="{{session('Shipping_Status')}}">
+                                            <!-- <input list="Shipping_Status" name="Shipping_Status" id="Shipping_Status" value="{{session('Shipping_Status')}}"> -->
                                             
-                                            <datalist id="Shipping_Status">
+                                            <!-- <datalist id="Shipping_Status">
          
                                               <option value="Pending">
                                               <option value="Processing">
                                              
-                                            </datalist>
+                                            </datalist> -->
+                                            <select name="Shipping_Status">
+                                                <option value="{{session('Shipping_Status')}}" hidden>{{session('Shipping_Status')}}</option> 
+                                              <option value="Pending">Pending</option>
+                                              <option value="Processing">Processing</option>
+                                               <option value="Shipped">Shipped</option>
+                                             
+                                            </select>
                                     <button type="submit">Update</button>
                                     </form>
                                     </td>

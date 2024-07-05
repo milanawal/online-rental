@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') Gainloe @endsection
+@section('title') ORS @endsection
 @section('keywords') Home,About,Contact,Car @endsection
 @section('description') Write some descripton about the webpage @endsection
 @section('content')

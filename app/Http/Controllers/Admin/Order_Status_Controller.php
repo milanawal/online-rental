@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller; 
     use App\Models\Products;
+    use App\Models\OrderProducts;
     use Illuminate\Support\Facades\Cookie;
     use Session;
     use Illuminate\Support\Facades\Validator;
@@ -118,7 +119,7 @@ class Order_Status_Controller extends Controller
         	                    {
         	                        $message->to($loginid, $name)->subject
         	                        ('Your Onlinerental.com order '.$id.' is Delivered');
-        	                        $message->from('onlinerental.com','OnlineRental');
+        	                        $message->from('admin@onlinerental.com','OnlineRental');
         	                        
         	                    });
            /* Email Alert Ends Here*/
@@ -207,7 +208,7 @@ class Order_Status_Controller extends Controller
         	                    {
         	                        $message->to($loginid, $name)->subject
         	                        ('Your Onlinerental.com order '.$id.' is Cancelled');
-        	                        $message->from('codetalentum@btao.in','OnlineRental');
+        	                        $message->from('admin@onlinerental.com','OnlineRental');
         	                        
         	                    });
            /* Email Alert Ends Here*/

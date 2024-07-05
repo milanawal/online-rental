@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title') Gainloe @endsection
+@section('title') ORS @endsection
 @section('keywords')   @endsection
 @section('description')   @endsection
 @section('content')
@@ -45,10 +45,10 @@
                       <a class="nav-link" id="Images-tab" data-toggle="tab" href="#Images" role="tab" aria-controls="Images"
                         aria-selected="false">Images</a>
                     </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link" id="SEO-tab" data-toggle="tab" href="#SEO" role="tab" aria-controls="SEO"
                       aria-selected="false">SEO</a>
-                  </li>
+                  </li> -->
                   @if(auth()->user() && auth()->user()->role=='admin')
                   <li class="nav-item">
                       <a class="nav-link" id="pstatus-tab" data-toggle="tab" href="#pstatus" role="tab" aria-controls="pstatus"
@@ -77,8 +77,14 @@
 
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <label> Custom URL(Slug)</label>
-                                  <input type="text" class="form-control" name="url" placeholder="Custom URL" value="{{$Products->url}}">
+                                  <label> Category</label>
+                                  <select class="form-control" name="category_id" id="category_id" required>
+                                    <option value="">Select Category</option>
+                                    @foreach($categories as $category)
+                                        <option {{ !empty($Products->category_id) && $Products->category_id==$category->id ? 'selected="selected"' : ''}} value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+
                               </div>
                           </div>
 
@@ -91,8 +97,8 @@
 
                           <div class="col-md-6"   >
                               <div class="form-group">
-                                  <label>Priority</label>
-                                  <input type="number" name="priority" min="0" class="form-control" value="{{$Products->priority}}">
+                                  <label>Cost</label>
+                                  <input type="number" name="cost" min="0" class="form-control" value="{{$Products->cost}}">
                               </div>
                           </div>
 
@@ -105,12 +111,12 @@
                           </div>
                           <div class="col-md-6"   >
                               <div class="form-group">
-                                  <label>Discount ( in terms of %)</label>
-                                  <input type="number" name="Discount" min="0" class="form-control" value="{{$Products->discount}}">
+                                  <label>Quantity</label>
+                                  <input type="number" name="quantity" min="0" class="form-control" value="{{$Products->quantity}}">
                               </div>
                           </div>
   
-                          <div class="col-md-6">
+                          <!-- <div class="col-md-6">
                             <div class="form-group">
                                 <label>Rating</label>
                                 <select class="form-control" name="rating">
@@ -122,7 +128,7 @@
                                         <option value="5">5</option>
                                 </select> 
                             </div>
-                        </div>
+                        </div> -->
                           <div class="col-md-12">
                               <div class="form-group">
                               <button type="submit" class="btaobtn btaobtn-success">Update</button>
