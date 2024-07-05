@@ -168,14 +168,14 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                         'emailBody'=>$emailbody
                         
                         );
-                        // Mail::send(array('html' => 'emails.order_email'), $emailcontent, function($message) use
-                        // ($loginid, $name,$id)
-                        // {
-                        //     $message->to($loginid, $name)->subject
-                        //     ('Your Onlinerental.com order '.$id.' is Confirmed');
-                        //     $message->from('codetalentum@btao.in','OnlineRental');
+                        Mail::send(array('html' => 'emails.order_email'), $emailcontent, function($message) use
+                        ($loginid, $name,$id)
+                        {
+                            $message->to($loginid, $name)->subject
+                            ('Your Onlinerental.com order '.$id.' is Confirmed');
+                            $message->from('admin@onlinerental.com','OnlineRental');
                             
-                        // });
+                        });
                 
                     // Session::forget('cart');
                     

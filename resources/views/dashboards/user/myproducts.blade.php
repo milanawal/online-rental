@@ -19,10 +19,20 @@
   </div>
   @endif
   
+  
 
 </div>
 
- 
+@if (session('warningstatus'))
+
+<script>
+            $(document).ready(function () {
+
+        $('#centralModalWarning').modal('show');
+
+        });
+        </script>
+@endif
 
 <div class="container py-5">
     <p align="left">
@@ -95,4 +105,32 @@
 </div>
    
 <hr>
+
+<div class="modal fade" id="centralModalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Warning</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fas fa-exclamation-circle fa-4x mb-3 animated rotateIn"></i>
+          <h3 style="color: red"> <?php echo session('warningstatus')?></h3>
+        
+        </div>
+      </div>
+
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
 @endsection

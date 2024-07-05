@@ -8,7 +8,14 @@ use App\Models\Category;
 class FrontendController extends Controller
 {
     function allProducts() {
-        $categories = Category::with('products')->get();
+        if(auth()->user()){
+            $userId = auth()->user()->id;
+            $categories = Category::with('products')->whereHas('products', function ($query) use ($userId) {
+                $query->where('owner_id', '!=', $userId);
+            })->get();
+        }else{
+            $categories = Category::with('products')->get();
+        }
         return view('products', compact('categories'));
     }
 }
