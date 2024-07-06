@@ -29,12 +29,20 @@ $(document).ready(function () {
             success: function (response) {
                 //window.alert(response.quantity);
                 alertify.set('notifier','position','top-right');
-                
+                console.log(response);
                 if(response.quantity!=undefined)
                 {
                     $('#msg_diverr2').show();
                     $('#triggererrors').show();
                     $('#triggererrors').append(response.quantity);
+                }else if(response.start_date!=undefined){
+                    $('#msg_diverr2').show();
+                    $('#triggererrors').show();
+                    $('#triggererrors').append(response.start_date);
+                }else if(response.end_date!=undefined){
+                    $('#msg_diverr2').show();
+                    $('#triggererrors').show();
+                    $('#triggererrors').append(response.end_date);
                 }
                 else
                 {
@@ -54,7 +62,9 @@ $(document).ready(function () {
               
                
                
-            },
+            },error:function (response) {
+                console.log(response);
+            }
         });
     });
 
@@ -74,7 +84,6 @@ $(document).ready(function () {
         var start_date = $(this).closest('.product_data').find('.start_date').val();
         var end_date = $(this).closest('.product_data').find('.end_date').val();
 
-
         $.ajax({
             url: "/add-to-cart",
             method: "POST",
@@ -87,13 +96,21 @@ $(document).ready(function () {
             success: function (response) {
                 //window.alert(response.quantity);
                 alertify.set('notifier','position','top-right');
-                    ;
-                
+                    
+                    console.log(response);
                 if(response.quantity!=undefined)
                 {
                     $('#msg_diverr2').show();
                     $('#triggererrors').show();
                     $('#triggererrors').append(response.quantity);
+                }else if(response.start_date!=undefined){
+                    $('#msg_diverr2').show();
+                    $('#triggererrors').show();
+                    $('#triggererrors').append(response.start_date);
+                }else if(response.end_date!=undefined){
+                    $('#msg_diverr2').show();
+                    $('#triggererrors').show();
+                    $('#triggererrors').append(response.end_date);
                 }
                 else
                 {

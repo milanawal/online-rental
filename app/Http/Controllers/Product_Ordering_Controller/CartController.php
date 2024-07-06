@@ -24,8 +24,8 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                   $request->all(),
                   [
                       'quantity' => ['required', 'integer', 'min:1'],
-                      'start_date' => ['required', 'date'],
-                      'end_date' => ['required', 'date'],
+                      'start_date' => ['required', 'date', 'before:end_date'],
+                        'end_date' => ['required', 'date'],
                   ]
               );
 
